@@ -1,0 +1,7 @@
+{
+  "name": "solufit",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
