@@ -3,7 +3,7 @@
 @import "~swiper/css/pagination";
 .swiper {
   width: 100%;
-  height: 80%;
+  height: 100%;
 }
 
 .swiper-slide {
@@ -69,7 +69,7 @@ color: rgba(0, 0, 0, 0.45);
 
 .container {
   display: flex;
-  height: 250px;
+  height: 350px;
   align-items: center;
 }
 h2{
@@ -86,3 +86,7 @@ letter-spacing: -0.24px;
 color: rgba(0, 0, 0, 0.85);
 
 }
+p{
+  margin-bottom: 3rem !important;
+}
+

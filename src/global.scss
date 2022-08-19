@@ -50,7 +50,12 @@
 .img-icon{
   display: block;
   margin: auto;
-  margin-top: 5%;
+  margin-top: 10%;
 }
 
-
+.swiper-pagination-bullet-active{
+  background: #F9A102 !important;
+}
+.swiper-pagination-bullet{
+  background: #FBC158!important;
+}

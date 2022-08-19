@@ -1,13 +1,17 @@
 
-<ion-content [fullscreen]="true">
-  <app-swiper></app-swiper>
-  <div class="overflow-auto p-2 position-relative" style="flex:1" >
-    <div class="px-2 py-1">
-      <ion-button (click)="login()" expand="block" >EMPEZAR
-      </ion-button>
-      <p class="enlace mt-2">¿Ya Tienes Una Cuenta? <span >Iniciar Sesión</span></p>
+
+  <div class=" d-flex px-4 align-items-center w-100 h-100 overflow-auto login-container">
+    <div class="d-flex flex-column ion-justify-content-between w-100 h-100 ">
+      <div class="py-3 text-center d-flex flex-column ion-justify-content-center" style="">
+        <app-swiper></app-swiper>
+        <div class="overflow-auto p-2 position-relative" style="flex:1" >
+          <div class="px-2 py-1">
+            <ion-button (click)="login()" expand="block" >EMPEZAR
+            </ion-button>
+            <p class="enlace mt-2">¿Ya Tienes Una Cuenta? <span >Iniciar Sesión</span></p>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
-
-</ion-content>
 

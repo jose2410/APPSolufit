@@ -1,11 +1,16 @@
 .button-facebook{
   width: 320px;
   height: 56px;
-  left: 0px;
-  top: 0px;
-
   background: #1877F2;
   border-radius: 10px;
+  color: #FFFFFF;
+  text-decoration: none;
+  margin: auto;
+  display: flex;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+
 }
 .button-google{
   width: 320px;
@@ -16,6 +21,12 @@
   background: #FFFFFF;
   border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: 10px;
+  text-decoration: none;
+  margin: auto;
+  display: flex;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
 }
 .icon-facebook{
   margin-right: 10px;
@@ -39,4 +50,20 @@
 }
 .text-register{
   color: #05AD2F;
+}
+.login-content{
+  background: #FFFFFF;
+}
+span{
+  color: #05AD2F;
+}
+ion-button{
+width: 290px;
+  height: 72px;
+  background: #05AD2F;
+  border-radius: 24px;
+  margin: auto;
+}
+.enlace{
+  color: #7C7C7C;
 }
