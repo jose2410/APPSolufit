@@ -1,11 +1,11 @@
+import { LoginComponent } from './login/login.component';
+import { AuthRoutingModule } from './auth-routing.module';
 import { SwiperComponent } from './../swiper/swiper.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { IonicModule } from '@ionic/angular';
 import { FormsModule } from '@angular/forms';
-import { HomePage } from './home.page';
-import { SwiperModule } from 'swiper/angular';
-import { HomePageRoutingModule } from './home-routing.module';
+import { RegisterComponent } from './register/register.component';
 
 
 @NgModule({
@@ -13,9 +13,8 @@ import { HomePageRoutingModule } from './home-routing.module';
     CommonModule,
     FormsModule,
     IonicModule,
-    SwiperModule,
-    HomePageRoutingModule
+    AuthRoutingModule
   ],
-  declarations: [HomePage,SwiperComponent]
+  declarations: [LoginComponent,RegisterComponent]
 })
-export class HomePageModule {}
+export class AuthModule {}

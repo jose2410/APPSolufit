@@ -25,3 +25,25 @@
 #container a {
   text-decoration: none;
 }
+.enlace{
+  font-family: 'Signika';
+font-style: normal;
+font-weight: 400;
+font-size: 17px;
+line-height: 21px;
+/* identical to box height */
+
+
+color: #7C7C7C;
+
+}
+span{
+  color: #05AD2F;
+}
+ion-button{
+width: 290px;
+  height: 72px;
+  background: #05AD2F;
+  border-radius: 24px;
+  margin: auto;
+}
