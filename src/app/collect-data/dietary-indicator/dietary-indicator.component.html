@@ -1,0 +1,28 @@
+<ion-content>
+  <app-collectdata-layout>
+    <div class="overflow-auto d-flex flex-column h-100" >
+      <div class="d-block p-3">
+        <h3>
+          Indicadores dietéticos
+        </h3>
+
+      </div>
+      <ion-list lines="full" class="ion-no-margin">
+
+        <ion-item class="mt-2">
+          <ion-label class="label" position="stacked">¿Cuáles son las preparaciones de tu preferencia? (Ejem: cevivhe, arroz con pollo, etc.)  </ion-label>
+          <ion-textarea placeholder="placeholder"></ion-textarea>
+        </ion-item>
+        <ion-item class="mt-2">
+          <ion-label class="label" position="stacked">¿Cuáles son los alimentos o preparaciones que te desagradan?   </ion-label>
+          <ion-textarea placeholder="placeholder"></ion-textarea>
+        </ion-item>
+      </ion-list>
+
+      <div class="px-2 py-1 mt-5">
+        <a class="btn-next"  type="button" (click)="go()" expand="block">Siguiente
+        </a>
+      </div>
+    </div>
+  </app-collectdata-layout>
+</ion-content>

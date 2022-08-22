@@ -1,21 +1,21 @@
-import { SwiperComponent } from './../swiper/swiper.component';
+import { LogoComponent } from './../../components/logo/logo.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { IonicModule } from '@ionic/angular';
 import { FormsModule } from '@angular/forms';
-import { HomePage } from './home.page';
-import { SwiperModule } from 'swiper/angular';
+
+import { IonicModule } from '@ionic/angular';
+
 import { HomePageRoutingModule } from './home-routing.module';
 
+import { HomePage } from './home.page';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    SwiperModule,
     HomePageRoutingModule
   ],
-  declarations: [HomePage,SwiperComponent]
+  declarations: [HomePage,LogoComponent]
 })
 export class HomePageModule {}

@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
@@ -10,7 +11,7 @@ export class LoginComponent implements OnInit {
   showPassword = false;
   loginFrm: FormGroup;
   submited = false;
-  constructor() {
+  constructor(public router: Router) {
     this.loginFrm = new FormGroup({
       username: new FormControl('', Validators.required),
       password: new FormControl('', Validators.required)
@@ -20,5 +21,7 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
 
   }
-  async ngSubmit() {}
+  async ngSubmit() {
+    this.router.navigate(['home/sky']);
+  }
 }

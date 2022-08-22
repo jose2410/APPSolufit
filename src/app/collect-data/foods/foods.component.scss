@@ -1,0 +1,27 @@
+.card-sede{
+  border: 2px solid #F9A102;
+  border-radius: 24px;
+}
+.card-sede {
+  .card-body {
+    transition: all .2s ease-in;
+  }
+
+  &.active {
+    .card-body {
+      background: rgba(var(--ion-color-primary-rgb), .9) !important;
+      color: white;
+    }
+  }
+}
+.text-break{
+  font-family: 'Signika';
+font-style: normal;
+font-weight: 600;
+font-size: 15px;
+line-height: 18px;
+text-align: center;
+letter-spacing: 0.05em;
+
+color: #59595B;
+}

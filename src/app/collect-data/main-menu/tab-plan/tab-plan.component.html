@@ -1,0 +1,29 @@
+<div class="px-2 py-1 divider" style="flex: 1">
+  <div class=" px-2 py-3 overflow-hidden">
+    <p class="txt-plan">Mi Plan</p>
+    <div class="back"  ><ion-icon name="chevron-back-circle-outline"></ion-icon></div>
+    <div class="forward"  ><ion-icon name="chevron-forward-circle-outline"></ion-icon></div>
+      <div class=" py-1 px-3 d-flex flex-column justify-content-center align-items-center ">
+        <p class="mx-0 mb-2"><br><span class="fw-bold">Hoy</span></p>
+        <p class="mx-0 mb-2">Lunes, 1 ago.</p>
+      </div>
+    </div>
+</div>
+
+<div class="p-2 position-relative" style="overflow-y:auto;overflow-x: hidden;flex:10">
+<ion-content>
+
+  <div class="container">
+    <div class="row p-3">
+      <ng-container *ngFor="let plan of planesAsync">
+        <app-card-plan [plan]="plan" [agendar]="true"></app-card-plan>
+      </ng-container>
+    </div>
+  </div>
+  <ion-infinite-scroll *ngIf="enableInfinteScroll" threshold="100px" (ionInfinite)="loadData($event)">
+    <ion-infinite-scroll-content
+      [loadingSpinner]="'crescent'">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+</ion-content>
+  </div>

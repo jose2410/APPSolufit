@@ -1,0 +1,59 @@
+<ion-content>
+  <app-collectdata-layout>
+    <div class="overflow-auto d-flex flex-column h-100" >
+      <div class="d-block p-3">
+        <h3>
+          Antecedentes de salud
+        </h3>
+
+      </div>
+      <ion-list lines="full" class="ion-no-margin">
+        <ion-item>
+          <ion-label class="label">¿Toma algún medicamento? <span>*</span>:</ion-label>
+          <ion-select >
+            <ion-select-option value="apples">Apples</ion-select-option>
+            <ion-select-option value="oranges">Oranges</ion-select-option>
+            <ion-select-option value="bananas">Bananas</ion-select-option>
+          </ion-select>
+        </ion-item>
+        <ion-item class="mt-2">
+          <ion-label class="label">Dosis del medicamento <span>*</span>:</ion-label>
+          <ion-select >
+            <ion-select-option value="apples">Apples</ion-select-option>
+            <ion-select-option value="oranges">Oranges</ion-select-option>
+            <ion-select-option value="bananas">Bananas</ion-select-option>
+          </ion-select>
+        </ion-item>
+        <ion-item class="mt-2">
+          <ion-label class="label">¿Tiene lesiones? <span>*</span>:</ion-label>
+          <ion-select >
+            <ion-select-option value="apples">Apples</ion-select-option>
+            <ion-select-option value="oranges">Oranges</ion-select-option>
+            <ion-select-option value="bananas">Bananas</ion-select-option>
+          </ion-select>
+        </ion-item>
+        <ion-item class="mt-2">
+          <ion-label class="label">¿En qué parte del cuerpo presenta la lesión? <span>*</span>:</ion-label>
+          <ion-select >
+            <ion-select-option value="apples">Apples</ion-select-option>
+            <ion-select-option value="oranges">Oranges</ion-select-option>
+            <ion-select-option value="bananas">Bananas</ion-select-option>
+          </ion-select>
+        </ion-item>
+        <ion-item class="mt-2">
+          <ion-label class="label">Indicar enfermedad crónica: <span>*</span>:</ion-label>
+          <ion-select >
+            <ion-select-option value="apples">Apples</ion-select-option>
+            <ion-select-option value="oranges">Oranges</ion-select-option>
+            <ion-select-option value="bananas">Bananas</ion-select-option>
+          </ion-select>
+        </ion-item>
+      </ion-list>
+
+      <div class="px-2 py-1 mt-5">
+        <a class="btn-next"  type="button" (click)="go()" expand="block">Siguiente
+        </a>
+      </div>
+    </div>
+  </app-collectdata-layout>
+</ion-content>

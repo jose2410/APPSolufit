@@ -1,6 +1,7 @@
+import { LogoComponent } from './../components/logo/logo.component';
 import { LoginComponent } from './login/login.component';
 import { AuthRoutingModule } from './auth-routing.module';
-import { SwiperComponent } from './../swiper/swiper.component';
+import { SwiperComponent } from '../components/swiper/swiper.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { IonicModule } from '@ionic/angular';
@@ -16,6 +17,6 @@ import { RegisterComponent } from './register/register.component';
     IonicModule,
     AuthRoutingModule
   ],
-  declarations: [LoginComponent,RegisterComponent]
+  declarations: [LoginComponent,RegisterComponent,LogoComponent]
 })
 export class AuthModule {}

@@ -1,0 +1,39 @@
+.back{
+  position: absolute;
+  left: 0;
+  padding: 3rem .5rem;
+}
+.forward{
+  position: absolute;
+  right:  0;
+  padding: 3rem .5rem;
+}
+ion-icon {
+  font-size: 30px;
+}
+.divider{
+  border-bottom: 1px solid rgba(124, 124, 124, 0.3);
+}
+.txt-act{
+  font-family: 'Roboto';
+font-style: normal;
+font-weight: 700;
+font-size: 20px;
+line-height: 15px;
+letter-spacing: 0.25px;
+
+color: #000000;
+
+}
+.txt-1{
+  font-family: 'Roboto';
+font-style: normal;
+font-weight: 400;
+font-size: 15px;
+line-height: 20px;
+/* or 133% */
+
+letter-spacing: 0.25px;
+
+color: #000000;
+}

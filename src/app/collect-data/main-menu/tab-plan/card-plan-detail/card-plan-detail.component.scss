@@ -1,0 +1,102 @@
+.header .col {
+  background-color:lightgrey;
+}
+
+.col {
+  border: solid 1px #DEE2E6;
+  border-bottom-style: none;
+  border-right-style: none;
+}
+
+.col:last-child {
+  border-right: solid 1px #DEE2E6;
+}
+
+.row:last-child .col {
+  border-bottom: solid 1px #DEE2E6;
+}
+.card_historial{
+  border: 1px solid #F9A102;
+border-radius: 24px;
+}
+.title{
+  font-family: 'Roboto';
+font-style: normal;
+font-weight: 500;
+font-size: 25px;
+line-height: 15px;
+/* or 60% */
+
+letter-spacing: 0.25px;
+
+color: #000000;
+}
+.text-p{
+  font-family: 'Inter';
+font-style: normal;
+font-weight: 400;
+font-size: 12px;
+line-height: 17px;
+/* or 142% */
+
+
+color: #59595B;
+}
+
+.subtitulo{
+  font-family: 'Roboto';
+font-style: normal;
+font-weight: 400;
+font-size: 15px;
+line-height: 20px;
+/* or 133% */
+letter-spacing: 0.25px;
+
+color: #000000;
+
+}
+
+.text-col{
+  font-family: 'Roboto';
+font-style: normal;
+font-weight: 400;
+font-size: 15px;
+line-height: 20px;
+letter-spacing: 0.25px;
+
+color: #000000;
+}
+.name-col{
+  font-family: 'Roboto';
+font-style: normal;
+font-weight: 400;
+font-size: 12px;
+line-height: 20px;
+letter-spacing: 0.25px;
+
+color: #59595B;
+}
+.col{
+  font-family: 'Roboto';
+font-style: normal;
+font-weight: 400;
+font-size: 12px;
+line-height: 17px;
+/* or 142% */
+height: 40px;
+
+color: #000000;
+}
+.forward{
+  text-align: right;
+  font-family: 'Inter';
+font-style: normal;
+font-weight: 400;
+font-size: 12px;
+line-height: 17px;
+/* or 142% */
+
+text-align: right;
+
+color: #59595B;
+}
