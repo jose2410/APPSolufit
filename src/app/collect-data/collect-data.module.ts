@@ -1,3 +1,4 @@
+import { InMemoryDataService } from './../services/in-memory-data.service';
 import { QuestionsComponent } from './questions/questions.component';
 import { DietaryIndicatorComponent } from './dietary-indicator/dietary-indicator.component';
 import { SearchFoodsComponent } from './search-foods/search-foods.component';
@@ -18,6 +19,8 @@ import { IonicModule } from '@ionic/angular';
 import { CollectDataPageRoutingModule } from './collect-data-routing.module';
 
 import { CollectDataPage } from './collect-data.page';
+import { HttpClientModule } from '@angular/common/http';
+import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 
 @NgModule({
   imports: [
@@ -25,7 +28,11 @@ import { CollectDataPage } from './collect-data.page';
     FormsModule,
     ReactiveFormsModule,
     IonicModule,
-    CollectDataPageRoutingModule
+    CollectDataPageRoutingModule,
+    HttpClientModule,
+    HttpClientInMemoryWebApiModule.forRoot(
+      InMemoryDataService, { dataEncapsulation: false }
+    )
   ],
   declarations: [
     CollectDataPage,

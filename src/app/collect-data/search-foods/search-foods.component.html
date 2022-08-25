@@ -1,25 +1,27 @@
 <ion-content>
   <app-collectdata-layout>
     <div class="d-flex flex-column h-100">
-      <div style="flex: 1" class="d-block p-3">
+      <div class="content-search d-block p-3">
         <h4>
           Indicadores dietéticos
         </h4>
         <p class="m-0 p-text">¿Qué alimentos dispones y son de tu preferencia? </p>
         <p class="small"></p>
-        <div class="input-container">
-          <ion-input  placeholder="Buscar"></ion-input>
-        </div>
+        <ion-item>
+          <ion-input [(ngModel)]="search" placeholder="Buscar"></ion-input>
+        </ion-item>
       </div>
 
-      <div class="p-2 position-relative" style="overflow-y:auto;overflow-x: hidden;flex:10">
+      <div class="p-2 position-relative">
         <div class="row">
-          <div class="col-6 my-2" style="min-height: 100%" >
-            <app-foods></app-foods>
+          <div class="col-6 my-2 div-for" *ngFor="let food of foodsFiltradas()" >
+            <app-foods [isActive]="foodSeleccionados === food"
+            (onClick)="setEspecialidad($event)"
+            [food]="food"></app-foods>
           </div>
         </div>
       </div>
-      <div class="px-2 py-1" style="flex: 1">
+      <div class="px-2 py-1 div-button">
         <ion-button expand="block" (click)="go()" >Siguiente
         </ion-button>
       </div>

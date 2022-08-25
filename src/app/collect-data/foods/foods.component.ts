@@ -1,3 +1,4 @@
+import { Food } from './../../core/interfaces/food';
 import { Component, Input, OnInit, Output,EventEmitter } from '@angular/core';
 
 
@@ -8,13 +9,15 @@ import { Component, Input, OnInit, Output,EventEmitter } from '@angular/core';
   styleUrls: ['./foods.component.scss'],
 })
 export class FoodsComponent implements OnInit {
- // @Input() especialidad: Especialidad;
+  @Input() food: Food;
   @Input() isActive = false;
-
- // @Output() onClick: EventEmitter<string> = new EventEmitter();
+    // eslint-disable-next-line @angular-eslint/no-output-on-prefix
+  @Output() onClick: EventEmitter<string> = new EventEmitter();
   constructor() { }
 
-  ngOnInit() {}
+  ngOnInit() {
+    console.log(this.food);
+  }
 
   click() {
    // this.onClick.emit(this.especialidad.codigo);
