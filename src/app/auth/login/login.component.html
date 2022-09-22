@@ -35,12 +35,12 @@
               </svg>
 
           </div>
-
+          <form [formGroup]="loginFrm" (ngSubmit)="ngSubmit()">
             <ion-item class="mt-5">
-              <ion-input placeholder="Correo"></ion-input>
+              <ion-input placeholder="Correo" formControlName="email"></ion-input>
             </ion-item>
             <ion-item class="mt-2">
-              <ion-input placeholder="Contraseña"[type]="showPassword?'text':'password'"></ion-input>
+              <ion-input placeholder="Contraseña"[type]="showPassword?'text':'password'" formControlName="password"></ion-input>
               <ng-container>
                 <div class="cursor-pointer" (click)="showPassword = !showPassword">
                   <svg *ngIf="showPassword;else ojoShow" width="28" height="24" viewBox="0 0 28 24" fill="none"
@@ -76,6 +76,7 @@
                 <p class="enlace mt-2">¿Aún No Estás Registrado?  <span >Regístrate</span></p>
               </div>
             </div>
+            </form>
       </div>
     </div>
   </div>
