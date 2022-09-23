@@ -12,7 +12,10 @@ export class AuthService {
   }
 
   login(user: User) {
-    return this.http.post(environment.api_url + 'login', user);
+    return this.http.post(`${environment.api_url} + 'login'`, user);
   }
-
+  register(data) {
+    //TODO
+    return this.http.post(environment.api_url + 'usuarios', data);
+  }
 }

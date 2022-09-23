@@ -14,12 +14,15 @@
               </svg>
 
           </div>
-
+          <form [formGroup]="registerFrm" (ngSubmit)="onSubmit()">
             <ion-item class="mt-5">
-              <ion-input placeholder="Correo"></ion-input>
+              <ion-input placeholder="Correo" formControlName="email"></ion-input>
             </ion-item>
             <ion-item class="mt-2">
-              <ion-input placeholder="Contraseña"[type]="showPassword?'text':'password'"></ion-input>
+              <ion-input placeholder="Contraseña"[type]="showPassword?'text':'password'" formControlName="password"></ion-input>
+              <div *ngIf="submited && registerFrm.get('password').errors" class="alert alert-danger">
+                <div *ngIf="registerFrm.get('password').errors.required">Password is required</div>
+              </div>
               <ng-container>
                 <div class="cursor-pointer" (click)="showPassword = !showPassword">
                   <svg *ngIf="showPassword;else ojoShow" width="28" height="24" viewBox="0 0 28 24" fill="none"
@@ -49,7 +52,13 @@
 
             </ion-item>
             <ion-item class="mt-2">
-              <ion-input placeholder="Contraseña"[type]="showPassword2?'text':'password'"></ion-input>
+              <ion-input placeholder="Contraseña"[type]="showPassword2?'text':'password'" formControlName="confirmPassword"></ion-input>
+              <div *ngIf="submited && registerFrm.get('confirmPassword').errors" class="alert alert-danger">
+                <div *ngIf="registerFrm.get('confirmPassword').errors.required">Confirm Password is required</div>
+
+                <div *ngIf="registerFrm.get('confirmPassword').errors.confirmPasswordValidator">Passsword and
+                  Confirm Password didn't match. </div>
+              </div>
               <ng-container>
                 <div class="cursor-pointer" (click)="showPassword2 = !showPassword2">
                   <svg *ngIf="showPassword2;else ojoShow2" width="28" height="24" viewBox="0 0 28 24" fill="none"
@@ -79,11 +88,12 @@
             </ion-item>
             <div class="overflow-auto p-2 position-relative" style="flex:1" >
               <div class="px-2 py-1">
-                <ion-button expand="block"  (click)="ngSubmit()" >REGISTRARSE
+                <ion-button expand="block"  (click)="onSubmit()" >REGISTRARSE
                 </ion-button>
                 <p class="enlace mt-2">Iniciar sessio <span >login</span></p>
               </div>
             </div>
+            </form>
       </div>
     </div>
   </div>

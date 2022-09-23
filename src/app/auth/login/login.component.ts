@@ -29,6 +29,7 @@ export class LoginComponent implements OnInit {
 
   }
 
+  // eslint-disable-next-line @typescript-eslint/member-ordering
   get f() {
     return this.loginFrm.value;
   }
@@ -60,5 +61,9 @@ export class LoginComponent implements OnInit {
     }, () => {
       loading.dismiss();
     });
+  }
+
+  goRegister(){
+    this.router.navigate(['/auth/register']);
   }
 }
