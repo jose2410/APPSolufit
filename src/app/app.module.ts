@@ -22,9 +22,9 @@ import { InMemoryDataService } from './services/in-memory-data.service';
     SwiperModule,
     ReactiveFormsModule,
     HttpClientModule,
-    HttpClientInMemoryWebApiModule.forRoot(
+    /*HttpClientInMemoryWebApiModule.forRoot(
       InMemoryDataService, { dataEncapsulation: false }
-    )
+    )*/
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,

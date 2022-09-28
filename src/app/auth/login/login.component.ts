@@ -42,12 +42,13 @@ export class LoginComponent implements OnInit {
       return true;
     }
     await loading.present();
+    console.log(this.f);
     this.apiServce.login(this.f).subscribe(async (response: AuthResponse) => {
       const user = response.user;
-
+      console.log(response);
       localStorage.setItem('token', response.token);
 
-      const toastSuccess = await this.toastCtrl.create({message: `Bienvenido ${user.email}`, duration: 2500});
+      const toastSuccess = await this.toastCtrl.create({message: `Bienvenido ${this.f.email}`, duration: 2500});
       await toastSuccess.present();
      // this.router.navigate(['home/sky']);
       await this.router.navigate(['/home/sky'], {replaceUrl: true, queryParams: {auth: true}});
