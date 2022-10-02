@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
   // eslint-disable-next-line @typescript-eslint/naming-convention
-  api_url: 'http://192.168.0.137:3000/api/',
+  api_url: 'http://localhost:3000/api/',
 };
 
 /*

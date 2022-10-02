@@ -24,12 +24,18 @@ export class RegisterComponent implements OnInit {
      private apiServce: AuthService) {
     this.registerFrm = this.fb.group(
       {
-        email: ["",Validators.required],
-        password: ["",Validators.required],
-        confirmPassword: ["",Validators.required]
+        names: ['',Validators.required],
+        lastnames: ['',Validators.required],
+        email: ['',Validators.required],
+        sexo: ['',Validators.required],
+        edad: ['',Validators.required],
+        phone: ['',Validators.required],
+        dni: ['',],
+        password: ['',Validators.required],
+        confirmPassword: ['',Validators.required]
       },
       {
-        validator: ConfirmPasswordValidator("password", "confirmPassword")
+        validator: ConfirmPasswordValidator('password', 'confirmPassword')
       }
     );
   }
@@ -38,9 +44,8 @@ export class RegisterComponent implements OnInit {
 
   async onSubmit() {
     this.submited = true;
-    console.log(this.registerFrm.value);
     const loading = await this.loadingCtrl.create({message: 'Cargando ... un momento por favor'});
-    if ( this.registerFrm.invalid){
+    if (this.registerFrm.invalid){
       return true;
     }
     await loading.present();
@@ -59,7 +64,35 @@ export class RegisterComponent implements OnInit {
     this.apiServce.register(data).subscribe(async (response: UserResponse) => {
       const user = response.usuario;
 
-      localStorage.setItem('token', response.token);
+      if(response.ok){
+        localStorage.setItem('token', response.token);
+        this.registerPaciente(user,loading);
+      }
+    }, async (error) => {
+      console.log(error);
+      const er = error.error;
+      const toastError = await this.toastCtrl.create({message: `El registro fallo`, duration: 2500});
+      await toastError.present();
+      await loading.dismiss();
+    }, () => {
+      loading.dismiss();
+    });
+  }
+
+  registerPaciente(user,loading) {
+    const valueForm = this.registerFrm.value;
+    const data ={
+      nombre:valueForm.names,
+      apellidos:valueForm.lastnames,
+      genero:valueForm.sexo,
+      edad:valueForm.edad,
+      celular:valueForm.phone,
+      dociden:valueForm.dni,
+      usuario:user.uid
+    };
+    console.log(data);
+    this.apiServce.registerPaciente(data).subscribe(async (response) => {
+      console.log(response);
 
       const toastSuccess = await this.toastCtrl.create({message: `Bienvenido ${user.email}`, duration: 2500});
       await toastSuccess.present();
