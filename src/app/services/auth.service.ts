@@ -20,7 +20,4 @@ export class AuthService {
     return this.http.post(environment.api_url + 'usuarios', data);
   }
 
-  registerPaciente(data){
-    return this.http.post(environment.api_url + 'pacientes', data);
-  }
 }

@@ -7,33 +7,35 @@
         </h3>
 
       </div>
+      <form [formGroup]="personalFrm" (ngSubmit)="ngSubmit()">
       <ion-list lines="full" class="ion-no-margin">
         <ion-item class="mt-2">
           <ion-label>Sexo:</ion-label>
-          <ion-input ></ion-input>
+          <ion-input [disabled]="true" formControlName="genero"></ion-input>
         </ion-item>
         <ion-item>
           <ion-label>Edad:</ion-label>
-          <ion-input ></ion-input>
+          <ion-input [disabled]="true" formControlName="edad"></ion-input>
         </ion-item>
         <ion-item class="mt-2">
           <ion-label>Estatura (cm):</ion-label>
-          <ion-input ></ion-input>
+          <ion-input formControlName="estatura"></ion-input>
         </ion-item>
         <ion-item class="mt-2">
           <ion-label>Peso (kg):</ion-label>
-          <ion-input ></ion-input>
+          <ion-input formControlName="peso"></ion-input>
         </ion-item>
         <ion-item class="mt-2">
           <ion-label>Perímetro abdominal (cm):</ion-label>
-          <ion-input ></ion-input>
+          <ion-input formControlName="perimetro"></ion-input>
         </ion-item>
       </ion-list>
 
       <div class="px-2 py-1 mt-5">
-        <a class="btn-next"  type="button" (click)="go()" expand="block">Siguiente
+        <a class="btn-next"  type="button" (click)="ngSubmit()" expand="block">Siguiente
         </a>
       </div>
+      </form>
     </div>
   </app-collectdata-layout>
 </ion-content>

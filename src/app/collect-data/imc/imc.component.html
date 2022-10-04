@@ -91,9 +91,9 @@
 
       </div>
       <p class="lable">Su nivel de IMC es:</p>
-      <p class="lable-r">25. 0</p>
+      <p class="lable-r">{{imc | number : '1.2-2'}}</p>
       <p class="lable">Nivel de peso es:</p>
-      <p class="lable-r">Sobrepeso</p>
+      <p class="lable-r">{{title}}</p>
 
       <div class="px-2 py-1 mt-2">
         <a class="btn-next"  type="button" (click)="go()" expand="block">Siguiente

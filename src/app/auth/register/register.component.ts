@@ -1,3 +1,4 @@
+import { PacienteService } from './../../services/paciente.service';
 import { UserResponse } from './../../core/interfaces/UserResponse';
 import { AuthService } from './../../services/auth.service';
 import { LoadingController, ToastController } from '@ionic/angular';
@@ -21,7 +22,8 @@ export class RegisterComponent implements OnInit {
     private fb: FormBuilder,
     private loadingCtrl: LoadingController,
      private toastCtrl: ToastController,
-     private apiServce: AuthService) {
+     private apiServce: AuthService,
+     private pacienteService: PacienteService) {
     this.registerFrm = this.fb.group(
       {
         names: ['',Validators.required],
@@ -62,6 +64,7 @@ export class RegisterComponent implements OnInit {
       estado_usuario:'1'
     };
     this.apiServce.register(data).subscribe(async (response: UserResponse) => {
+      console.log(response);
       const user = response.usuario;
 
       if(response.ok){
@@ -91,7 +94,7 @@ export class RegisterComponent implements OnInit {
       usuario:user.uid
     };
     console.log(data);
-    this.apiServce.registerPaciente(data).subscribe(async (response) => {
+    this.pacienteService.registerPaciente(data).subscribe(async (response) => {
       console.log(response);
 
       const toastSuccess = await this.toastCtrl.create({message: `Bienvenido ${user.email}`, duration: 2500});

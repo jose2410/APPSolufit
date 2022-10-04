@@ -45,9 +45,9 @@ export class LoginComponent implements OnInit {
     console.log(this.f);
     this.apiServce.login(this.f).subscribe(async (response: AuthResponse) => {
       const user = response.user;
-      console.log(response);
+      console.log('reponse ', response);
       localStorage.setItem('token', response.token);
-
+      localStorage.setItem('uid_user', response.uid);
       const toastSuccess = await this.toastCtrl.create({message: `Bienvenido ${this.f.email}`, duration: 2500});
       await toastSuccess.present();
      // this.router.navigate(['home/sky']);
