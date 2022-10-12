@@ -27,3 +27,16 @@ letter-spacing: 0.05em;
 
 color: #FFFFFF;
 }
+
+.card-sede {
+  .card-body {
+    transition: all .2s ease-in;
+  }
+
+  &.active {
+    .card-body {
+      background: rgba(var(--ion-color-primary-rgb), .9) !important;
+      color: white;
+    }
+  }
+}

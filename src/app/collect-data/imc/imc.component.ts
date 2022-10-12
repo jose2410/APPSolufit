@@ -1,3 +1,4 @@
+import { LoadingController, ToastController } from '@ionic/angular';
 import { FichaNutricionalService } from 'src/app/services/fucha-nutricional.service';
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
@@ -13,6 +14,8 @@ export class ImcComponent implements OnInit {
   data: any;
   constructor(
     public router: Router,
+    private loadingCtrl: LoadingController,
+    private toastCtrl: ToastController,
     private fichaService: FichaNutricionalService
     ) { }
 
@@ -21,7 +24,6 @@ export class ImcComponent implements OnInit {
   }
   go(){
     this.updateFicha();
-    this.router.navigate(['collect/health']);
   }
 
 
@@ -45,11 +47,14 @@ export class ImcComponent implements OnInit {
     else if(this.imc > 30.0){return 'Obesidad'}
   }
 
-  updateFicha(){
+ async updateFicha(){
+    const loading = await this.loadingCtrl.create({message: 'Espere un momento por favor'});
+    await loading.present();
     const datas = {
       fecha_registro:this.data.fecha_registro,
       imc_inicial: this.imc,
       imc_actual:this.data.imc_actual,
+      imc_descripcion:this.title,
       peso_inicial:  this.data.peso_inicial,
       peso_actual:this.data.peso_actual ,
       perimetro_abdominal_inicial:this.data.perimetro_abdominal_inicial,
@@ -65,7 +70,17 @@ export class ImcComponent implements OnInit {
     };
 
     this.fichaService.actualizarFicha(datas).subscribe((response: any)=>{
-      console.log(response);
-     });
+      // eslint-disable-next-line no-underscore-dangle
+      localStorage.setItem('uid_ficha', response.fichas._id);
+      this.router.navigate(['collect/health']);
+    }, async (error) => {
+      console.log(error);
+      const er = error.error;
+      const toastError = await this.toastCtrl.create({message: er.msg, duration: 2500});
+      await toastError.present();
+      await loading.dismiss();
+    }, () => {
+      loading.dismiss();
+    });
   }
 }

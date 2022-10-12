@@ -7,39 +7,39 @@
         </h3>
 
       </div>
+      <form [formGroup]="questFrm" (ngSubmit)="updateFicha()">
       <ion-list lines="full" class="ion-no-margin">
         <ion-item class="mt-2">
           <ion-label>¿Cuentas con balanza en casa? <span>*</span></ion-label>
-          <ion-select >
-            <ion-select-option value="apples">Apples</ion-select-option>
-            <ion-select-option value="oranges">Oranges</ion-select-option>
-            <ion-select-option value="bananas">Bananas</ion-select-option>
+          <ion-select formControlName="balanzacasa">
+            <ion-select-option value="si">Si</ion-select-option>
+            <ion-select-option value="no">No</ion-select-option>
           </ion-select>
         </ion-item>
 
         <ion-item class="mt-2">
           <ion-label position="stacked">¿Cuentas con balanza de alimentos en casa?  <span>*</span></ion-label>
-          <ion-textarea placeholder="placeholder"></ion-textarea>
+          <ion-textarea formControlName="balanzaalimento" placeholder="placeholder"></ion-textarea>
         </ion-item>
         <ion-item class="mt-2">
           <ion-label>¿Cuentas con accesorios para entrenar en casa? <span>*</span></ion-label>
-          <ion-select >
-            <ion-select-option value="apples">Apples</ion-select-option>
-            <ion-select-option value="oranges">Oranges</ion-select-option>
-            <ion-select-option value="bananas">Bananas</ion-select-option>
+          <ion-select formControlName="accesorios">
+            <ion-select-option value="si">Si</ion-select-option>
+            <ion-select-option value="no">No</ion-select-option>
           </ion-select>
         </ion-item>
         <ion-item class="mt-2">
           <ion-label position="stacked">Indicar accesorios de entrenamiento  <span>*</span></ion-label>
-          <ion-textarea placeholder="placeholder"></ion-textarea>
+          <ion-textarea formControlName="indicar" placeholder="placeholder"></ion-textarea>
         </ion-item>
 
       </ion-list>
 
       <div class="px-2 py-1 mt-5">
-        <a class="btn-next"  type="button" (click)="go()" expand="block">Siguiente
+        <a class="btn-next"  type="button" (click)="updateFicha()" expand="block">Siguiente
         </a>
       </div>
+      </form>
     </div>
   </app-collectdata-layout>
 </ion-content>

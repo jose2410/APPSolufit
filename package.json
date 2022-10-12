@@ -27,6 +27,7 @@
     "@capacitor/status-bar": "4.0.1",
     "@ionic/angular": "^6.1.9",
     "angular-in-memory-web-api": "^0.14.0",
+    "angular-svg-icon": "^14.0.0",
     "bootstrap": "^5.0.0-beta3",
     "chart.js": "^3.9.1",
     "moment": "^2.29.1",

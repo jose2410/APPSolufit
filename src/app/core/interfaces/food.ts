@@ -3,4 +3,5 @@ export interface Food {
   namefood?: string;
   imgsvg?: string;
   flag?: string;
+  isChecked: boolean;
 }

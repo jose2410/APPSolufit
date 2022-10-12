@@ -17,6 +17,10 @@ export class FichaNutricionalService {
     return this.http.post(environment.api_url + 'ficha', data);
   }
 
+  getFichaById(id) {
+    return this.http.get(environment.api_url + `ficha/${id}`);
+  }
+
   getFichaByPacienteId(uid) {
     return this.http.get(environment.api_url + `ficha/paciente/${uid}`);
   }
@@ -24,4 +28,40 @@ export class FichaNutricionalService {
   actualizarFicha( data: any ) {
     return this.http.put( environment.api_url + `ficha/${ data._id }`, data);
   }
+
+  // Antecedentes Salud
+
+  registroAntecendete(data) {
+    //TODO
+    return this.http.post(environment.api_url + 'antecedente', data);
+  }
+
+  // Estilo Vida
+  registrEstiloVida(data) {
+    //TODO
+    return this.http.post(environment.api_url + 'estilo', data);
+  }
+
+  // idicador dietetico
+
+  registrIndicador(data) {
+    //TODO
+    return this.http.post(environment.api_url + 'idicador', data);
+  }
+
+  actualizarIndicador( data: any ) {
+    return this.http.put( environment.api_url + `idicador/${ data._id }`, data);
+  }
+
+  getIndicadoreId(id) {
+    return this.http.get(environment.api_url + `idicador/${id}`);
+  }
+
+  //Registro estado
+
+  registroEstado(data) {
+    //TODO
+    return this.http.post(environment.api_url + 'estado', data);
+  }
+
 }

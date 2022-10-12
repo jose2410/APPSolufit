@@ -7,39 +7,39 @@
         </h3>
 
       </div>
+      <form [formGroup]="indicadorFrm" (ngSubmit)="ngSubmit()">
       <ion-list lines="full" class="ion-no-margin">
         <ion-item class="mt-2">
           <ion-label>¿Es alérgico o intolerante a algún alimento? <span>*</span></ion-label>
-          <ion-select >
-            <ion-select-option value="apples">Apples</ion-select-option>
-            <ion-select-option value="oranges">Oranges</ion-select-option>
-            <ion-select-option value="bananas">Bananas</ion-select-option>
+          <ion-select formControlName="alergia">
+            <ion-select-option value="si">Si</ion-select-option>
+            <ion-select-option value="no">No</ion-select-option>
           </ion-select>
         </ion-item>
 
         <ion-item class="mt-2">
           <ion-label position="stacked">Especifique los alimentos </ion-label>
-          <ion-textarea placeholder="placeholder"></ion-textarea>
+          <ion-textarea placeholder="placeholder" formControlName="alimentos"></ion-textarea>
         </ion-item>
         <ion-item class="mt-2">
           <ion-label>¿Consume algún suplemento? <span>*</span></ion-label>
-          <ion-select >
-            <ion-select-option value="apples">Apples</ion-select-option>
-            <ion-select-option value="oranges">Oranges</ion-select-option>
-            <ion-select-option value="bananas">Bananas</ion-select-option>
+          <ion-select formControlName="suplemento">
+            <ion-select-option value="si">Si</ion-select-option>
+            <ion-select-option value="no">No</ion-select-option>
           </ion-select>
         </ion-item>
         <ion-item class="mt-2">
           <ion-label position="stacked">Especifique los suplemento </ion-label>
-          <ion-textarea placeholder="placeholder"></ion-textarea>
+          <ion-textarea placeholder="placeholder" formControlName="suplementoses"></ion-textarea>
         </ion-item>
 
       </ion-list>
 
       <div class="px-2 py-1 mt-5">
-        <a class="btn-next"  type="button" (click)="go()" expand="block">Siguiente
+        <a class="btn-next"  type="button" (click)="ngSubmit()" expand="block">Siguiente
         </a>
       </div>
+      </form>
     </div>
   </app-collectdata-layout>
 </ion-content>

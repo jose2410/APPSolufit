@@ -2,30 +2,176 @@
   <app-collectdata-layout>
     <div class="d-flex flex-column h-100">
       <div class="content-search d-block p-3">
-        <h4>
-          Indicadores dietéticos
-        </h4>
-        <p class="m-0 p-text">¿Qué alimentos dispones y son de tu preferencia? </p>
+        <h4>Indicadores dietéticos</h4>
+        <p class="m-0 p-text">
+          ¿Qué alimentos dispones y son de tu preferencia?
+        </p>
         <p class="small"></p>
-        <ion-item>
+        <!--ion-item>
           <ion-input [(ngModel)]="search" placeholder="Buscar"></ion-input>
-        </ion-item>
+        </ion-item-->
       </div>
 
       <div class="p-2 position-relative">
         <div class="row">
-          <div class="col-6 my-2 div-for" *ngFor="let food of foodsFiltradas()" >
-            <app-foods [isActive]="foodSeleccionados === food"
-            (onClick)="setEspecialidad($event)"
-            [food]="food"></app-foods>
+          <p class="text-center txt-title">Proteínas</p>
+          <hr />
+          <div class="col-6 my-2 div-for" *ngFor="let food of proteinas">
+            <div
+              class="card-sede card mb-4 shadow ion-activatable position-relative overflow-hidden h-100"
+            >
+              <div
+                class="card-body p-0 d-flex flex-column rounded align-items-center ion-justify-content-center"
+              >
+                <div class="">
+                  <input
+                    type="checkbox"
+                    name=""
+                    id=""
+                    [(ngModel)]="food.isChecked"
+                    (change)="changeSelection()"
+                  />
+                  <ng-container>
+                    <img [src]="food.imgsvg" alt="" />
+                  </ng-container>
+                </div>
+                <div class="w-100 px-1 py-1 small">
+                  <p class="m-0 fw-bold ion-text-center text-break small">
+                    {{ food.namefood }}
+                  </p>
+                </div>
+              </div>
+              <ion-ripple-effect></ion-ripple-effect>
+            </div>
+          </div>
+          <p class="text-center txt-title mt-4">Carbohidratos</p>
+          <hr />
+          <div class="col-6 my-2 div-for" *ngFor="let food of carbohidratoss">
+            <div
+              class="card-sede card mb-4 shadow ion-activatable position-relative overflow-hidden h-100"
+            >
+              <div
+                class="card-body p-0 d-flex flex-column rounded align-items-center ion-justify-content-center"
+              >
+                <div class="">
+                  <input
+                    type="checkbox"
+                    name=""
+                    id=""
+                    [(ngModel)]="food.isChecked"
+                    (change)="changeSelection()"
+                  />
+                  <ng-container>
+                    <img [src]="food.imgsvg" alt="" />
+                  </ng-container>
+                </div>
+                <div class="w-100 px-1 py-1 small">
+                  <p class="m-0 fw-bold ion-text-center text-break small">
+                    {{ food.namefood }}
+                  </p>
+                </div>
+              </div>
+              <ion-ripple-effect></ion-ripple-effect>
+            </div>
+          </div>
+
+          <p class="text-center txt-title mt-4">Grasas</p>
+          <hr />
+          <div class="col-6 my-2 div-for" *ngFor="let food of grasass">
+            <div
+            class="card-sede card mb-4 shadow ion-activatable position-relative overflow-hidden h-100"
+          >
+            <div
+              class="card-body p-0 d-flex flex-column rounded align-items-center ion-justify-content-center"
+            >
+              <div class="">
+                <input
+                  type="checkbox"
+                  name=""
+                  id=""
+                  [(ngModel)]="food.isChecked"
+                  (change)="changeSelection()"
+                />
+                <ng-container>
+                  <img [src]="food.imgsvg" alt="" />
+                </ng-container>
+              </div>
+              <div class="w-100 px-1 py-1 small">
+                <p class="m-0 fw-bold ion-text-center text-break small">
+                  {{ food.namefood }}
+                </p>
+              </div>
+            </div>
+            <ion-ripple-effect></ion-ripple-effect>
+          </div>
+          </div>
+
+          <p class="text-center txt-title mt-4">Lacteos y bebidas</p>
+          <hr />
+          <div class="col-6 my-2 div-for" *ngFor="let food of lacteos">
+            <div
+            class="card-sede card mb-4 shadow ion-activatable position-relative overflow-hidden h-100"
+          >
+            <div
+              class="card-body p-0 d-flex flex-column rounded align-items-center ion-justify-content-center"
+            >
+              <div class="">
+                <input
+                  type="checkbox"
+                  name=""
+                  id=""
+                  [(ngModel)]="food.isChecked"
+                  (change)="changeSelection()"
+                />
+                <ng-container>
+                  <img [src]="food.imgsvg" alt="" />
+                </ng-container>
+              </div>
+              <div class="w-100 px-1 py-1 small">
+                <p class="m-0 fw-bold ion-text-center text-break small">
+                  {{ food.namefood }}
+                </p>
+              </div>
+            </div>
+            <ion-ripple-effect></ion-ripple-effect>
+          </div>
+          </div>
+
+          <p class="text-center txt-title mt-4">Frutas</p>
+          <hr />
+          <div class="col-6 my-2 div-for" *ngFor="let food of fruta">
+            <div
+            class="card-sede card mb-4 shadow ion-activatable position-relative overflow-hidden h-100"
+          >
+            <div
+              class="card-body p-0 d-flex flex-column rounded align-items-center ion-justify-content-center"
+            >
+              <div class="">
+                <input
+                  type="checkbox"
+                  name=""
+                  id=""
+                  [(ngModel)]="food.isChecked"
+                  (change)="changeSelection()"
+                />
+                <ng-container>
+                  <img [src]="food.imgsvg" alt="" />
+                </ng-container>
+              </div>
+              <div class="w-100 px-1 py-1 small">
+                <p class="m-0 fw-bold ion-text-center text-break small">
+                  {{ food.namefood }}
+                </p>
+              </div>
+            </div>
+            <ion-ripple-effect></ion-ripple-effect>
+          </div>
           </div>
         </div>
       </div>
       <div class="px-2 py-1 div-button">
-        <ion-button expand="block" (click)="go()" >Siguiente
-        </ion-button>
+        <ion-button expand="block" (click)="updateFicha()">Siguiente </ion-button>
       </div>
     </div>
   </app-collectdata-layout>
-
 </ion-content>

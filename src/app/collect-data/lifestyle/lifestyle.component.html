@@ -7,157 +7,114 @@
         </h3>
 
       </div>
+      <form [formGroup]="estiloFrm" (ngSubmit)="ngSubmit()">
       <ion-list lines="full" class="ion-no-margin">
         <ion-item class="mt-2">
-          <ion-label>¿Usted realiza ejercicio?  <span>*</span></ion-label>
-          <ion-select >
-            <ion-select-option value="apples">Apples</ion-select-option>
-            <ion-select-option value="oranges">Oranges</ion-select-option>
-            <ion-select-option value="bananas">Bananas</ion-select-option>
+          <ion-label>¿Usted realiza ejercicio?  </ion-label>
+          <ion-select formControlName="ejercicio" (ionChange)="changeEjercicio($event)">
+            <ion-select-option value="si">Si</ion-select-option>
+            <ion-select-option value="no">No</ion-select-option>
           </ion-select>
         </ion-item>
-        <ion-item>
-          <ion-label>Tipo de ejercicios que realiza  <span>*</span></ion-label>
-          <ion-select >
-            <ion-select-option value="apples">Apples</ion-select-option>
-            <ion-select-option value="oranges">Oranges</ion-select-option>
-            <ion-select-option value="bananas">Bananas</ion-select-option>
-          </ion-select>
+        <ion-item *ngIf="isshowEjercicio">
+          <ion-label>Tipo de ejercicios que realiza  </ion-label>
+            <ion-input formControlName="tipo"></ion-input>
         </ion-item>
-        <ion-item class="mt-2">
+        <ion-item class="mt-2" *ngIf="isshowEjercicio">
           <ion-label>¿Con qué frecuencia realiza éstos ejercicios?</ion-label>
-          <ion-select >
-            <ion-select-option value="apples">Apples</ion-select-option>
-            <ion-select-option value="oranges">Oranges</ion-select-option>
-            <ion-select-option value="bananas">Bananas</ion-select-option>
-          </ion-select>
+          <ion-input formControlName="frecuenciaEjercicio"></ion-input>
         </ion-item>
-        <ion-item class="mt-2">
-          <ion-label>¿Cuál es la duración?  <span>*</span></ion-label>
-          <ion-select >
-            <ion-select-option value="apples">Apples</ion-select-option>
-            <ion-select-option value="oranges">Oranges</ion-select-option>
-            <ion-select-option value="bananas">Bananas</ion-select-option>
-          </ion-select>
+        <ion-item class="mt-2" *ngIf="isshowEjercicio">
+          <ion-label>¿Cuál es la duración?  </ion-label>
+          <ion-input formControlName="duracionEjercicio"></ion-input>
         </ion-item>
-        <ion-item class="mt-2">
-          <ion-label>¿Desde hace cuánto hace ejercicio?  <span>*</span></ion-label>
-          <ion-select >
-            <ion-select-option value="apples">Apples</ion-select-option>
-            <ion-select-option value="oranges">Oranges</ion-select-option>
-            <ion-select-option value="bananas">Bananas</ion-select-option>
-          </ion-select>
+        <ion-item class="mt-2" *ngIf="isshowEjercicio">
+          <ion-label>¿Desde hace cuánto hace ejercicio?  </ion-label>
+          <ion-input formControlName="desdeTiempo"></ion-input>
         </ion-item>
         <ion-item class="mt-2">
           <ion-label>¿Consume alcohol? <span>*</span></ion-label>
-          <ion-select >
-            <ion-select-option value="apples">Apples</ion-select-option>
-            <ion-select-option value="oranges">Oranges</ion-select-option>
-            <ion-select-option value="bananas">Bananas</ion-select-option>
+          <ion-select formControlName="alcohol" (ionChange)="changeAlcohol($event)">
+            <ion-select-option value="si">Si</ion-select-option>
+            <ion-select-option value="no">No</ion-select-option>
           </ion-select>
         </ion-item>
         <ion-grid>
           <ion-row>
             <ion-col>
-              <ion-item class="mt-2">
-                <ion-label>Frecuencia <span>*</span></ion-label>
-                <ion-select >
-                  <ion-select-option value="apples">Apples</ion-select-option>
-                  <ion-select-option value="oranges">Oranges</ion-select-option>
-                  <ion-select-option value="bananas">Bananas</ion-select-option>
-                </ion-select>
+              <ion-item class="mt-2" *ngIf="isshowAlcol">
+                <ion-label>Frecuencia </ion-label>
+                <ion-input formControlName="frecuenciaAlcohol"></ion-input>
               </ion-item>
             </ion-col>
             <ion-col>
-              <ion-item class="mt-2">
-                <ion-label>Cantidad: <span>*</span></ion-label>
-                <ion-select >
-                  <ion-select-option value="apples">Apples</ion-select-option>
-                  <ion-select-option value="oranges">Oranges</ion-select-option>
-                  <ion-select-option value="bananas">Bananas</ion-select-option>
-                </ion-select>
+              <ion-item class="mt-2" *ngIf="isshowAlcol">
+                <ion-label>Cantidad: </ion-label>
+                <ion-input formControlName="cantidadAlcohol"></ion-input>
               </ion-item>
             </ion-col>
           </ion-row>
         </ion-grid>
         <ion-item class="mt-2">
           <ion-label>¿Consume café? <span>*</span></ion-label>
-          <ion-select >
-            <ion-select-option value="apples">Apples</ion-select-option>
-            <ion-select-option value="oranges">Oranges</ion-select-option>
-            <ion-select-option value="bananas">Bananas</ion-select-option>
+          <ion-select formControlName="cafe" (ionChange)="changeCafe($event)">
+            <ion-select-option value="si">Si</ion-select-option>
+            <ion-select-option value="no">No</ion-select-option>
           </ion-select>
         </ion-item>
         <ion-grid>
           <ion-row>
             <ion-col>
-              <ion-item class="mt-2">
-                <ion-label>Frecuencia: <span>*</span></ion-label>
-                <ion-select >
-                  <ion-select-option value="apples">Apples</ion-select-option>
-                  <ion-select-option value="oranges">Oranges</ion-select-option>
-                  <ion-select-option value="bananas">Bananas</ion-select-option>
-                </ion-select>
+              <ion-item class="mt-2" *ngIf="isshowCafe">
+                <ion-label>Frecuencia: </ion-label>
+                <ion-input formControlName="frecuenciaCafe"></ion-input>
               </ion-item>
             </ion-col>
             <ion-col>
-              <ion-item class="mt-2">
-                <ion-label>Cantidad <span>*</span></ion-label>
-                <ion-select >
-                  <ion-select-option value="apples">Apples</ion-select-option>
-                  <ion-select-option value="oranges">Oranges</ion-select-option>
-                  <ion-select-option value="bananas">Bananas</ion-select-option>
-                </ion-select>
+              <ion-item class="mt-2" *ngIf="isshowCafe">
+                <ion-label>Cantidad </ion-label>
+                <ion-input formControlName="cantidadCafe"></ion-input>
               </ion-item>
             </ion-col>
           </ion-row>
         </ion-grid>
         <ion-item class="mt-2">
           <ion-label>¿Consume dulces y chocolate? <span>*</span></ion-label>
-          <ion-select >
-            <ion-select-option value="apples">Apples</ion-select-option>
-            <ion-select-option value="oranges">Oranges</ion-select-option>
-            <ion-select-option value="bananas">Bananas</ion-select-option>
+          <ion-select formControlName="dulces" (ionChange)="changeDulce($event)">
+            <ion-select-option value="si">Si</ion-select-option>
+            <ion-select-option value="no">No</ion-select-option>
           </ion-select>
         </ion-item>
         <ion-grid>
           <ion-row>
             <ion-col>
-              <ion-item class="mt-2">
-                <ion-label>Frecuencia: <span>*</span></ion-label>
-                <ion-select >
-                  <ion-select-option value="apples">Apples</ion-select-option>
-                  <ion-select-option value="oranges">Oranges</ion-select-option>
-                  <ion-select-option value="bananas">Bananas</ion-select-option>
-                </ion-select>
+              <ion-item class="mt-2" *ngIf="isshowDulce">
+                <ion-label>Frecuencia: </ion-label>
+                <ion-input formControlName="frecuenciaDulces"></ion-input>
               </ion-item>
             </ion-col>
             <ion-col>
-              <ion-item class="mt-2">
-                <ion-label>Cantidad <span>*</span></ion-label>
-                <ion-select >
-                  <ion-select-option value="apples">Apples</ion-select-option>
-                  <ion-select-option value="oranges">Oranges</ion-select-option>
-                  <ion-select-option value="bananas">Bananas</ion-select-option>
-                </ion-select>
+              <ion-item class="mt-2" *ngIf="isshowDulce">
+                <ion-label>Cantidad </ion-label>
+                <ion-input formControlName="cantidadDulces"></ion-input>
               </ion-item>
             </ion-col>
           </ion-row>
         </ion-grid>
         <ion-item class="mt-2">
           <ion-label>¿Consume bebidas azucaradas? <span>*</span></ion-label>
-          <ion-select >
-            <ion-select-option value="apples">Apples</ion-select-option>
-            <ion-select-option value="oranges">Oranges</ion-select-option>
-            <ion-select-option value="bananas">Bananas</ion-select-option>
+          <ion-select formControlName="bebidas">
+            <ion-select-option value="si">Si</ion-select-option>
+            <ion-select-option value="no">No</ion-select-option>
           </ion-select>
         </ion-item>
       </ion-list>
 
       <div class="px-2 py-1 mt-5">
-        <a class="btn-next"  type="button" (click)="go()" expand="block">Siguiente
+        <a class="btn-next"  type="button" (click)="ngSubmit()" expand="block">Siguiente
         </a>
       </div>
+    </form>
     </div>
   </app-collectdata-layout>
 </ion-content>

@@ -1,4 +1,4 @@
-import { ToastController, LoadingController } from '@ionic/angular';
+import { ToastController, LoadingController, NavController } from '@ionic/angular';
 import { PacienteResponse } from './../../core/interfaces/pacienteResponse';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { PacienteService } from './../../services/paciente.service';
@@ -15,7 +15,7 @@ import { FichaNutricionalService } from 'src/app/services/fucha-nutricional.serv
 export class PersonalInfoComponent implements OnInit {
   personalFrm: FormGroup;
   submited = false;
-  uidpaciente: string = "";
+  uidpaciente: any = '';
   constructor(
     public router: Router,
     private pacienteService: PacienteService,
@@ -38,6 +38,8 @@ export class PersonalInfoComponent implements OnInit {
   get f() {
     return this.personalFrm.value;
   }
+
+
   getPacienteUserById(){
     this.pacienteService.getPacienteByUserId(localStorage.getItem('uid_user')).subscribe(
       (r: PacienteResponse) => {
@@ -67,7 +69,6 @@ export class PersonalInfoComponent implements OnInit {
     await loading.present();
     const valueForm = this.personalFrm.value;
     const data ={
-      fecha_registro:'',
       imc_inicial:'',
       imc_actual:'',
       peso_inicial:  valueForm.peso,
@@ -81,8 +82,11 @@ export class PersonalInfoComponent implements OnInit {
       descripcion_accesorio_ejercicio: '',
       paciente: this.uidpaciente
     };
-    this.fichaService.registroFicha(data).subscribe(async (response) => {
-      console.log(response);
+    this.fichaService.registroFicha(data).subscribe(async (response: any) => {
+
+      // eslint-disable-next-line no-underscore-dangle
+      //localStorage.setItem('uid_ficha', response.fichas._id);
+      this.router.navigate(['collect/imc']);
     }, async (error) => {
       console.log(error);
       const er = error.error;
@@ -92,6 +96,6 @@ export class PersonalInfoComponent implements OnInit {
     }, () => {
       loading.dismiss();
     });
-   //this.router.navigate(['collect/imc']);
+   //
   }
 }

@@ -7,36 +7,27 @@
         <div class="message px-3 mt-4">
           <p>¿Cuál es tu Objetivo?</p>
         </div>
-        <div class="row py-2 px-3">
-          <div class="col-12">
-            <div (click)="go()" class="card   border-0 shadow-sm">
-              <div class="card-body rounded">
-                <p class="p-text">
-                  Perde peso
-                </p>
-              </div>
+        <div class="overflow-auto d-flex flex-column h-100" >
+          <div class="overflow-auto p-2 position-relative" style="flex:1">
+            <ng-container *ngFor="let lit of lists">
+              <div (onClick)="selectObjetivo($event);" (click)="go()"
+             class="card-sede card mb-4 shadow border-0 ion-activatable position-relative overflow-hidden"
+             [class.active]="lit === objetivoSeleccionada">
+          <div class="card-body d-flex rounded align-items-center">
+
+            <div class="w-100 px-3 py-1 small">
+              <p class="m-0 fw-bold p-text"><span class="fw-normal"></span> {{lit.name}}</p>
             </div>
           </div>
+          <ion-ripple-effect></ion-ripple-effect>
         </div>
-        <div class="row py-2 px-3">
-          <div class="col-12">
-            <div class="card  border-0 shadow-sm">
-              <div class="card-body rounded">
-               <p class="p-text">Mantener Peso</p>
-              </div>
-            </div>
+            </ng-container>
+            <div></div>
           </div>
-        </div>
-        <div class="row py-2 px-3">
-          <div class="col-12">
-            <div class="card  border-0 shadow-sm">
-              <div class="card-body rounded">
-               <p class="p-text">Ganar Masa Muscular</p>
-              </div>
-            </div>
-          </div>
+
         </div>
       </div>
     </div>
   </div>
 </ion-content>
+

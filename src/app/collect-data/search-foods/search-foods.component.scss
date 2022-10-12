@@ -32,3 +32,49 @@ h4{
 .div-button{
   flex: 1;
 }
+
+.txt-title{
+font-family: 'Roboto';
+font-style: normal;
+font-weight: 400;
+font-size: 15px;
+line-height: 18px;
+/* identical to box height */
+
+
+color: #59595B;
+}
+
+.card-sede{
+  border: 2px solid #F9A102;
+  border-radius: 24px;
+}
+.card-sede {
+  .card-body {
+    transition: all .2s ease-in;
+  }
+
+  &.active {
+    .card-body {
+      background: rgba(var(#3880FF), .9) !important;
+      color: white;
+    }
+  }
+}
+.text-break{
+  font-family: 'Signika';
+font-style: normal;
+font-weight: 600;
+font-size: 15px;
+line-height: 18px;
+text-align: center;
+letter-spacing: 0.05em;
+
+color: #59595B;
+}
+input[type=checkbox] {
+  padding: 0;
+  position: absolute;
+  margin-left: 24px;
+  box-sizing: border-box;
+}

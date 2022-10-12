@@ -21,6 +21,7 @@ import { CollectDataPageRoutingModule } from './collect-data-routing.module';
 import { CollectDataPage } from './collect-data.page';
 import { HttpClientModule } from '@angular/common/http';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
+import { AngularSvgIconModule } from 'angular-svg-icon';
 
 @NgModule({
   imports: [
@@ -32,7 +33,8 @@ import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
     HttpClientModule,
     HttpClientInMemoryWebApiModule.forRoot(
       InMemoryDataService, { dataEncapsulation: false }
-    )
+    ),
+    AngularSvgIconModule.forRoot()
   ],
   declarations: [
     CollectDataPage,

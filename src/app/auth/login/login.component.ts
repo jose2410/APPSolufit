@@ -51,8 +51,8 @@ export class LoginComponent implements OnInit {
       const toastSuccess = await this.toastCtrl.create({message: `Bienvenido ${this.f.email}`, duration: 2500});
       await toastSuccess.present();
      // this.router.navigate(['home/sky']);
-      await this.router.navigate(['/home/sky'], {replaceUrl: true, queryParams: {auth: true}});
-
+    //  await this.router.navigate(['/home/sky'], {replaceUrl: true, queryParams: {auth: true}});
+    this.getEstadoUser(response.uid);
     }, async (error) => {
       console.log(error);
       const er = error.error;
@@ -64,6 +64,29 @@ export class LoginComponent implements OnInit {
     });
   }
 
+  getEstadoUser(user){
+    this.apiServce.getEstadoUser(user).subscribe(( response: any ) =>{
+      console.log('erro 001',response);
+      if(response.estado.is_register_ficha ){
+        //this.router.navigate(['/home/sky']);
+        this.router.navigate(['main/plan']);
+      }else{
+        //this.router.navigate(['main/plan']);
+        this.router.navigate(['/home/sky']);
+      }
+    }, async (error) => {
+      console.log(error);
+      const er = error.error;
+      if(!error.error.ok){
+        this.router.navigate(['/home/sky']);
+      }
+      const toastError = await this.toastCtrl.create({message: `Usuario sin ficha`, duration: 2500});
+      await toastError.present();
+     // await loading.dismiss();
+    }, () => {
+     // loading.dismiss();
+    });
+  }
   goRegister(){
     this.router.navigate(['/auth/register']);
   }

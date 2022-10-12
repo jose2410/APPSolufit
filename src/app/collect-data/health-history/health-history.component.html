@@ -7,51 +7,41 @@
         </h3>
 
       </div>
+      <form [formGroup]="antesedenteFrm" (ngSubmit)="ngSubmit()">
       <ion-list lines="full" class="ion-no-margin">
         <ion-item>
           <ion-label class="label">¿Toma algún medicamento? <span>*</span>:</ion-label>
-          <ion-select >
+          <ion-select formControlName="medicamento" (ionChange)="changeMedicamento($event)" >
             <ion-select-option value="si">Si</ion-select-option>
             <ion-select-option value="no">No</ion-select-option>
           </ion-select>
         </ion-item>
-        <ion-item class="mt-2">
-          <ion-label class="label">Dosis del medicamento <span>*</span>:</ion-label>
-          <ion-select >
-            <ion-select-option value="apples">Apples</ion-select-option>
-            <ion-select-option value="oranges">Oranges</ion-select-option>
-            <ion-select-option value="bananas">Bananas</ion-select-option>
-          </ion-select>
+        <ion-item class="mt-2" *ngIf="isshowMedic">
+          <ion-label class="label">Dosis del medicamento:</ion-label>
+          <ion-input formControlName="docis"></ion-input>
         </ion-item>
         <ion-item class="mt-2">
           <ion-label class="label">¿Tiene lesiones? <span>*</span>:</ion-label>
-          <ion-select >
+          <ion-select formControlName="lesion" (ionChange)="changeLes($event)" >
             <ion-select-option value="si">Si</ion-select-option>
             <ion-select-option value="no">No</ion-select-option>
           </ion-select>
         </ion-item>
-        <ion-item class="mt-2">
+        <ion-item class="mt-2" *ngIf="isshowLes">
           <ion-label class="label">¿En qué parte del cuerpo presenta la lesión? <span>*</span>:</ion-label>
-          <ion-select >
-            <ion-select-option value="apples">Apples</ion-select-option>
-            <ion-select-option value="oranges">Oranges</ion-select-option>
-            <ion-select-option value="bananas">Bananas</ion-select-option>
-          </ion-select>
+          <ion-input  formControlName="deslesion"></ion-input>
         </ion-item>
         <ion-item class="mt-2">
-          <ion-label class="label">Indicar enfermedad crónica: <span>*</span>:</ion-label>
-          <ion-select >
-            <ion-select-option value="apples">Apples</ion-select-option>
-            <ion-select-option value="oranges">Oranges</ion-select-option>
-            <ion-select-option value="bananas">Bananas</ion-select-option>
-          </ion-select>
+          <ion-label class="label">Indicar enfermedad crónica:</ion-label>
+          <ion-input formControlName="enfermendad"></ion-input>
         </ion-item>
       </ion-list>
 
       <div class="px-2 py-1 mt-5">
-        <a class="btn-next"  type="button" (click)="go()" expand="block">Siguiente
+        <a class="btn-next"  type="button" (click)="ngSubmit()" expand="block">Siguiente
         </a>
       </div>
+      </form>
     </div>
   </app-collectdata-layout>
 </ion-content>

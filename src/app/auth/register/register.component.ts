@@ -46,6 +46,13 @@ export class RegisterComponent implements OnInit {
 
   async onSubmit() {
     this.submited = true;
+    //remover
+    localStorage.removeItem('uid_indicador');
+    localStorage.removeItem('uid_ficha');
+    localStorage.removeItem('uid_paciente');
+    localStorage.removeItem('token');
+    localStorage.removeItem('uid_user');
+
     const loading = await this.loadingCtrl.create({message: 'Cargando ... un momento por favor'});
     if (this.registerFrm.invalid){
       return true;
@@ -57,10 +64,6 @@ export class RegisterComponent implements OnInit {
       password: valueForm.password,
       img:'',
        // eslint-disable-next-line @typescript-eslint/naming-convention
-      fecha_creacion: '',
-      // eslint-disable-next-line @typescript-eslint/naming-convention
-      fecha_modificacion: '',
-       // eslint-disable-next-line @typescript-eslint/naming-convention
       estado_usuario:'1'
     };
     this.apiServce.register(data).subscribe(async (response: UserResponse) => {
@@ -69,6 +72,7 @@ export class RegisterComponent implements OnInit {
 
       if(response.ok){
         localStorage.setItem('token', response.token);
+        localStorage.setItem('uid_user', response.usuario.uid);
         this.registerPaciente(user,loading);
       }
     }, async (error) => {
@@ -94,13 +98,14 @@ export class RegisterComponent implements OnInit {
       usuario:user.uid
     };
     console.log(data);
-    this.pacienteService.registerPaciente(data).subscribe(async (response) => {
-      console.log(response);
-
+    this.pacienteService.registerPaciente(data).subscribe(async (response: any) => {
+      console.log('register paciente: ',response);
+     // eslint-disable-next-line no-underscore-dangle
+      localStorage.setItem('uid_paciente', response.paciente._id);
       const toastSuccess = await this.toastCtrl.create({message: `Bienvenido ${user.email}`, duration: 2500});
       await toastSuccess.present();
      // this.router.navigate(['home/sky']);
-      await this.router.navigate(['/home/sky'], {replaceUrl: true, queryParams: {auth: true}});
+      await this.router.navigate(['/home/sky']);
 
     }, async (error) => {
       console.log(error);

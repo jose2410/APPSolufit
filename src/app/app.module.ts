@@ -11,8 +11,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { SwiperModule } from 'swiper/angular';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
-import { InMemoryDataService } from './services/in-memory-data.service';
+import { AngularSvgIconModule } from 'angular-svg-icon';
 @NgModule({
   declarations: [AppComponent],
   imports: [
@@ -22,6 +21,7 @@ import { InMemoryDataService } from './services/in-memory-data.service';
     SwiperModule,
     ReactiveFormsModule,
     HttpClientModule,
+    AngularSvgIconModule.forRoot()
     /*HttpClientInMemoryWebApiModule.forRoot(
       InMemoryDataService, { dataEncapsulation: false }
     )*/

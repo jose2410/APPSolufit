@@ -20,4 +20,9 @@ export class AuthService {
     return this.http.post(environment.api_url + 'usuarios', data);
   }
 
+  getEstadoUser(id) {
+    return this.http.get(environment.api_url + `estado/${id}`);
+  }
+
+
 }
