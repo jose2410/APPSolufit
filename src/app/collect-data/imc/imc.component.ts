@@ -42,8 +42,8 @@ export class ImcComponent implements OnInit {
 
   showTexto(){
     if(this.imc < 18.5){return 'Bajo de peso'}
-    else if(this.imc > 18.5 || this.imc === 24.9){return 'Normal'}
-    else if(this.imc > 25.0 || this.imc === 29.9){return 'Sobrepeso'}
+    else if(this.imc > 18.5 && this.imc < 24.9){return 'Peso Saludable'}
+    else if(this.imc > 25.0 && this.imc < 29.9){return 'Sobrepeso'}
     else if(this.imc > 30.0){return 'Obesidad'}
   }
 
