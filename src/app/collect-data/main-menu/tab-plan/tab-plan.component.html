@@ -14,16 +14,19 @@
 <ion-content>
 
   <div class="container">
-    <div class="row p-3">
-      <ng-container *ngFor="let plan of planesAsync">
+    <div class="row p-3 " *ngIf="!comidas">
+      <p>Esta en proceso la asignacion de tus comidas ..</p>
+    </div>
+    <div class="row p-3" *ngIf="comidas">
+      <ng-container *ngFor="let plan of comidas">
         <app-card-plan [plan]="plan" [agendar]="true"></app-card-plan>
       </ng-container>
     </div>
   </div>
-  <ion-infinite-scroll *ngIf="enableInfinteScroll" threshold="100px" (ionInfinite)="loadData($event)">
+  <!--ion-infinite-scroll *ngIf="enableInfinteScroll" threshold="100px" (ionInfinite)="loadData($event)">
     <ion-infinite-scroll-content
       [loadingSpinner]="'crescent'">
     </ion-infinite-scroll-content>
-  </ion-infinite-scroll>
+  </ion-infinite-scroll-->
 </ion-content>
   </div>

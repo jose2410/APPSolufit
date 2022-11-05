@@ -1,3 +1,5 @@
+import { RouterModule } from '@angular/router';
+import { HttpClientModule } from '@angular/common/http';
 import { LogoComponent } from './../components/logo/logo.component';
 import { LoginComponent } from './login/login.component';
 import { AuthRoutingModule } from './auth-routing.module';
@@ -12,8 +14,10 @@ import { RegisterComponent } from './register/register.component';
 @NgModule({
   imports: [
     CommonModule,
+    RouterModule,
     FormsModule,
     ReactiveFormsModule,
+    HttpClientModule,
     IonicModule,
     AuthRoutingModule
   ],

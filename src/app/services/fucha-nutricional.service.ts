@@ -64,4 +64,31 @@ export class FichaNutricionalService {
     return this.http.post(environment.api_url + 'estado', data);
   }
 
+  //PLAN
+  getPlanByPacienteId(uid) {
+    return this.http.get(environment.api_url + `plan/${uid}`);
+  }
+  getHorarioByPlanId(uid) {
+    return this.http.get(environment.api_url + `horario/${uid}`);
+  }
+  getComidaByHorarioId(uid) {
+    return this.http.get(environment.api_url + `comida/${uid}`);
+  }
+  getComidadetail(uid) {
+    return this.http.get(environment.api_url + `comida/ch/${uid}`);
+  }
+
+  actualizarComidaEstado( data: any ) {
+    return this.http.put( environment.api_url + `comida/${ data._id }`, data);
+  }
+
+  //SEGUIMIENTO
+  registrarActivida(data: any){
+    return this.http.post(environment.api_url + 'seguimiento', data);
+  }
+
+  getSeguimientoByHorarioId(id){
+    return this.http.get(environment.api_url + `seguimiento/${id}`);
+  }
+
 }

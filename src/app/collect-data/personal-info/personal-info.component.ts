@@ -69,6 +69,9 @@ export class PersonalInfoComponent implements OnInit {
     await loading.present();
     const valueForm = this.personalFrm.value;
     const data ={
+      objetivo:localStorage.getItem('nameobjetico'),
+      nivel_actividad:localStorage.getItem('nameactiviy'),
+      taza_actividad:localStorage.getItem('taza'),
       imc_inicial:'',
       imc_actual:'',
       peso_inicial:  valueForm.peso,

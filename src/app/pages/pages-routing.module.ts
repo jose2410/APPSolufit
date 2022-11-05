@@ -8,6 +8,10 @@ const routes: Routes = [
     path: 'sky',
     loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
   },
+  {
+    path: 'activity',
+    loadChildren: () => import('./activity/activity.module').then( m => m.ActivityModule)
+  },
 ];
 
 @NgModule({

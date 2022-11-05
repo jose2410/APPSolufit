@@ -1,4 +1,7 @@
-import { IonInfiniteScroll } from '@ionic/angular';
+import { DatePipe } from '@angular/common';
+import { AuthService } from './../../../services/auth.service';
+import { FichaNutricionalService } from 'src/app/services/fucha-nutricional.service';
+import { IonInfiniteScroll, LoadingController, ToastController } from '@ionic/angular';
 
 import { Component, ViewChild, AfterViewInit, ElementRef } from '@angular/core';
 import Chart from 'chart.js/auto';
@@ -6,6 +9,7 @@ import Chart from 'chart.js/auto';
   selector: 'app-tab-monitoreo',
   templateUrl: './tab-monitoreo.component.html',
   styleUrls: ['./tab-monitoreo.component.scss'],
+  providers: [DatePipe]
 })
 export class TabMonitoreoComponent implements AfterViewInit  {
   @ViewChild('lineCanvas') lineCanvas: ElementRef | undefined;
@@ -17,11 +21,68 @@ export class TabMonitoreoComponent implements AfterViewInit  {
 
   enableInfinteScroll = true;
   page = 1;
+  mes: any[] = [];
+  peso: any[] = [];
+  abdomen: any[] = [];
 
-  constructor() { }
+  constructor(private apiServiceFicha: FichaNutricionalService, private apiService: AuthService,private loadingCtrl: LoadingController,
+    private toastCtrl: ToastController,private datePipe: DatePipe) { }
 
   ngAfterViewInit(): void {
-    this.lineChartMethod();
+    this.getSeguimiento();
+  }
+
+ async getSeguimiento(){
+    const loading = await this.loadingCtrl.create({message: 'Cargando ... un momento por favor'});
+    await loading.present();
+    this.apiService.getPaciente(localStorage.getItem('uid_user')).subscribe((response: any)=>{
+      if(response.ok){
+        // eslint-disable-next-line no-underscore-dangle
+        this.apiService.getPlan(response.paciente._id).subscribe( async (resp: any)=>{
+          await loading.dismiss();
+          if(resp.ok){
+            // eslint-disable-next-line no-underscore-dangle
+            this.apiService.getHorario(resp.plan._id).subscribe((resps: any)=>{
+                // eslint-disable-next-line no-underscore-dangle
+                this.apiServiceFicha.getSeguimientoByHorarioId(resps.horario._id).subscribe((sgresponse: any)=>{
+                  sgresponse.list.forEach(e => {
+                    this.mes.push(this.datePipe.transform(e.fecha_registro, 'MMM'));
+                    this.peso.push(e.peso);
+                    this.abdomen.push(e.medidas_cintura);
+                  });
+                  this.lineChartMethod();
+                });
+            }, async (error) => {
+              console.log(error);
+              const er = error.error;
+              const toastError = await this.toastCtrl.create({message: `No se obtuvo el horario`, duration: 2500});
+              await toastError.present();
+              await loading.dismiss();
+            }, () => {
+              loading.dismiss();
+            });
+          }
+        }, async (error) => {
+          console.log(error);
+          const er = error.error;
+          const toastError = await this.toastCtrl.create({message: `No se obtuvo el plan`, duration: 2500});
+          await toastError.present();
+          await loading.dismiss();
+        }, () => {
+          loading.dismiss();
+        });
+      }
+    }, async (error) => {
+      console.log(error);
+      const er = error.error;
+      const toastError = await this.toastCtrl.create({message: `El registro fallo`, duration: 2500});
+      await toastError.present();
+      await loading.dismiss();
+    }, () => {
+      loading.dismiss();
+    });
+
+
   }
 
   loadData($event: any) {
@@ -38,13 +99,7 @@ export class TabMonitoreoComponent implements AfterViewInit  {
     this.lineChart = new Chart(this.lineCanvas?.nativeElement, {
       type: 'line',
       data: {
-        labels: [
-          'Jul',
-          'Aug',
-          'Sep',
-          'Nov',
-          'Dec',
-        ],
+        labels: this.mes,
         datasets: [
           {
             label: 'Sell per week',
@@ -65,7 +120,7 @@ export class TabMonitoreoComponent implements AfterViewInit  {
             pointHoverBorderWidth: 2,
             pointRadius: 1,
             pointHitRadius: 10,
-            data: [10, 15, 20, 25, 30],
+            data: this.peso,
             spanGaps: false,
           },
         ],
@@ -74,13 +129,7 @@ export class TabMonitoreoComponent implements AfterViewInit  {
     this.lineChart2 = new Chart(this.lineCanvas2?.nativeElement, {
       type: 'line',
       data: {
-        labels: [
-          'Jul',
-          'Aug',
-          'Sep',
-          'Nov',
-          'Dec',
-        ],
+        labels: this.mes,
         datasets: [
           {
             label: 'Sell per week',
@@ -101,7 +150,7 @@ export class TabMonitoreoComponent implements AfterViewInit  {
             pointHoverBorderWidth: 2,
             pointRadius: 1,
             pointHitRadius: 10,
-            data: [10, 15, 20, 25, 30],
+            data: this.abdomen,
             spanGaps: false,
           },
         ],

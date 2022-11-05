@@ -17,7 +17,8 @@ export class CardPlanComponent implements OnInit {
   constructor(public router: Router) { }
 
   ngOnInit() {}
-  goDetail(){
-this.router.navigate(['main/plan/footdetail']);
+  goDetail(id){
+    localStorage.setItem('comidaId', id);
+    this.router.navigate(['main/plan/footdetail']);
   }
 }

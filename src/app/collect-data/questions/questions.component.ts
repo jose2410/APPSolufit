@@ -50,6 +50,9 @@ async updateFicha(){
    const valueForm = this.questFrm.value;
   const datas = {
     fecha_registro:this.ficha.fecha_registro,
+    objetivo:this.ficha.objetivo,
+    nivel_actividad: this.ficha.nivel_actividad,
+    taza_actividad: this.ficha.taza_actividad,
     imc_inicial: this.ficha.imc_inicial,
     imc_actual:this.ficha.imc_actual,
     peso_inicial:  this.ficha.peso_inicial,

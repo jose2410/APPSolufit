@@ -5,12 +5,12 @@
       <div class="py-3 text-center d-flex flex-column ion-justify-content-center" style="">
         <app-logo></app-logo>
         <div class="message px-3 mt-4">
-          <p>¿Cuál es tu Objetivo?</p>
+          <p>¿Cuál es tu Nivel de actividad?</p>
         </div>
         <div class="overflow-auto d-flex flex-column h-100" >
           <div class="overflow-auto p-2 position-relative" style="flex:1">
             <ng-container *ngFor="let lit of lists">
-              <div (onClick)="selectObjetivo($event);" (click)="go(lit.name)"
+              <div (onClick)="selectObjetivo($event);" (click)="go(lit)"
              class="card-sede card mb-4 shadow border-0 ion-activatable position-relative overflow-hidden"
              [class.active]="lit === objetivoSeleccionada">
           <div class="card-body d-flex rounded align-items-center">
@@ -30,4 +30,3 @@
     </div>
   </div>
 </ion-content>
-

@@ -1,6 +1,6 @@
 <div class="col-12">
-  <div class="card my-2 card_historial border-0 rounded overflow-hidden shadow-sm" (click)="goDetail()">
-    <div class="agendar_cita" *ngIf="showAgendarCita" >{{plan.name}}</div>
+  <div class="card my-2 card_historial border-0 rounded overflow-hidden shadow-sm" (click)="goDetail(plan._id)">
+    <div class="agendar_cita" *ngIf="showAgendarCita" >{{plan.tipo}}</div>
     <div class="forward" *ngIf="showAgendarCita" ><ion-icon name="chevron-forward-outline"></ion-icon></div>
     <div class="card-body px-2 py-3 overflow-hidden">
 
@@ -17,7 +17,14 @@
       </div>
       <div class="card_detalle py-1 px-3 d-flex flex-column ">
         <p class="mx-0 mb-2"><br><span class="fw-bold">{{plan.descripcion}}</span></p>
-        <p class="mx-0 mb-2">{{plan.kcal}}</p>
+        <p class="mx-0 mb-2">{{plan.energia}}Kcal</p>
+        <div *ngIf="plan.estado_comida;else other_content">
+          <p class="mx-0 mb-2"><br><span class="fw-bold-success">completado</span></p>
+      </div>
+
+      <ng-template #other_content> <p class="mx-0 mb-2"><br><span class="fw-bold-red">pendiente</span></p></ng-template>
+
+
       </div>
     </div>
   </div>

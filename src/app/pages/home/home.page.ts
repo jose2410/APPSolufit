@@ -33,7 +33,8 @@ export class HomePage implements OnInit {
   selectObjetivo(list) {
     this.objetivoSeleccionada = this.lists.find(s => s.id === list);
   }
-  go(){
-  this.router.navigate(['collect']);
+  go(name){
+  localStorage.setItem('nameobjetico',name);
+  this.router.navigate(['home/activity']);
   }
 }

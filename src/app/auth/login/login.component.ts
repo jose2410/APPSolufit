@@ -1,9 +1,11 @@
 import { AuthResponse } from './../../core/interfaces/authResponse';
 import { AuthService } from './../../services/auth.service';
 import { Router } from '@angular/router';
-import { Component, OnInit } from '@angular/core';
+import { Component, NgZone, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { LoadingController, ToastController } from '@ionic/angular';
+
+declare const gapi: any;
 
 @Component({
   selector: 'app-login',
@@ -14,8 +16,10 @@ export class LoginComponent implements OnInit {
   showPassword = false;
   loginFrm: FormGroup;
   submited = false;
+  public auth2: any;
   constructor(
     public router: Router,
+    private ngZone: NgZone,
      private loadingCtrl: LoadingController,
      private toastCtrl: ToastController,
      private apiServce: AuthService) {
@@ -25,8 +29,8 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  ngOnInit() {
-
+  ngOnInit(): void {
+    this.renderButton();
   }
 
   // eslint-disable-next-line @typescript-eslint/member-ordering
@@ -89,5 +93,51 @@ export class LoginComponent implements OnInit {
   }
   goRegister(){
     this.router.navigate(['/auth/register']);
+  }
+
+  // login google
+
+  renderButton() {
+    gapi.signin2.render('my-signin2', {
+      // eslint-disable-next-line quote-props
+      'scope': 'profile email',
+        // eslint-disable-next-line quote-props
+      'width': 240,
+        // eslint-disable-next-line quote-props
+      'height': 50,
+        // eslint-disable-next-line quote-props
+      'longtitle': true,
+        // eslint-disable-next-line quote-props
+      'theme': 'dark',
+    });
+
+    this.startApp();
+
+  }
+
+  async startApp() {
+    await this.apiServce.googleInit();
+    this.auth2 = this.apiServce.auth2;
+
+    this.attachSignin( document.getElementById('my-signin2') );
+  };
+
+  attachSignin(element) {
+    this.auth2.attachClickHandler( element, {},
+        (googleUser) => {
+            // eslint-disable-next-line @typescript-eslint/naming-convention
+            const id_token = googleUser.getAuthResponse().id_token;
+            // console.log(id_token);
+            this.apiServce.loginGoogle( id_token )
+              .subscribe( resp => {
+                // Navegar al Dashboard
+                this.ngZone.run( () => {
+                  this.router.navigateByUrl('/');
+                })
+              });
+
+        }, (error) => {
+            alert(JSON.stringify(error, undefined, 2));
+        });
   }
 }

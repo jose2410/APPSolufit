@@ -1,3 +1,5 @@
+import { PacienteService } from './../../../services/paciente.service';
+import { FichaNutricionalService } from 'src/app/services/fucha-nutricional.service';
 import { Horario } from './../../../core/interfaces/horario';
 import { Plan } from './../../../core/interfaces/plan';
 import { Component, Input, OnInit, ViewChild } from '@angular/core';
@@ -10,65 +12,48 @@ import { IonInfiniteScroll } from '@ionic/angular';
 })
 export class TabPlanComponent implements OnInit {
   @ViewChild(IonInfiniteScroll) infiniteScroll: IonInfiniteScroll;
-  planes = [
-    {
-      name: 'Desayuno',
-      img: '',
-      descripcion: 'Smoothie de manzana',
-      kcal: '829 kcal'
-    },
-    {
-      name: 'Media mañana',
-      img: '',
-      descripcion: 'Fruta',
-      kcal: '151 kcal'
-    },
-    {
-      name: 'Almuerzo',
-      img: '',
-      descripcion: 'Pollo al horno con puré',
-      kcal: '755 kcal'
-    },
-    {
-      name: 'Media tarde',
-      img: '',
-      descripcion: 'Fruta',
-      kcal: '829 kcal'
-    },
-    {
-      name: 'Cena',
-      img: '',
-      descripcion: 'Sandwich Club',
-      kcal: '151 kcal'
-    },
-    {
-      name: 'Actividad',
-      img: '',
-      descripcion: 'Registra tu actividad',
-      kcal: 'Medidas'
-    }
-  ];
 
-  planesAsync: Plan[] = [];
+
+  comidas: any[];
+  planes: any[];
   page = 1;
   enableInfinteScroll = true;
+  userId: any;
 
-
-  constructor() {
-    this.planesAsync=this.planes;
+  constructor(private apiPlan: FichaNutricionalService, private apiPaciente: PacienteService) {
    }
 
-  ngOnInit() {}
-
-  loadData($event: any) {
-    setTimeout(() => {
-      this.page = this.page + 1;
-      this.planesAsync.push(
-        ...this.planes.slice(50 * this.page, 50 * this.page + 50)
-      );
-
-      $event.target.complete();
-    }, 750);
+  ngOnInit() {
+    this.getPacienteUser();
   }
+
+
+async getPacienteUser(){
+  //const loading = await this.loadingCtrl.create({message: 'Cargando ... un momento por favor'});
+ // await loading.present();
+  this.apiPaciente.getPacienteByUserId(localStorage.getItem('uid_user')).subscribe((response: any)=>{
+    // eslint-disable-next-line no-underscore-dangle
+    this.userId = response.paciente._id;
+    if(response.ok){
+      this.apiPlan.getPlanByPacienteId(this.userId).subscribe((r: any)=>{
+       if(r.ok){
+        // eslint-disable-next-line no-underscore-dangle
+        this.apiPlan.getHorarioByPlanId(r.plan._id).subscribe((resp: any)=>{
+          if(resp.ok){
+            // eslint-disable-next-line no-underscore-dangle
+            this.apiPlan.getComidaByHorarioId(resp.horario._id).subscribe((respc: any)=>{
+              this.comidas =respc.list;
+              console.log(respc.list);
+            });
+          }
+        });
+       }
+      });
+    }
+  });
+ }
+
+
+
 
 }

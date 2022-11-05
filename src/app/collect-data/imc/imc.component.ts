@@ -52,6 +52,9 @@ export class ImcComponent implements OnInit {
     await loading.present();
     const datas = {
       fecha_registro:this.data.fecha_registro,
+      objetivo:this.data.objetivo,
+      nivel_actividad:this.data.nivel_actividad,
+      taza_actividad:this.data.taza_actividad,
       imc_inicial: this.imc,
       imc_actual:this.data.imc_actual,
       imc_descripcion:this.title,
