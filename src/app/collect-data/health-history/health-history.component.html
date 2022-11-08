@@ -10,29 +10,29 @@
       <form [formGroup]="antesedenteFrm" (ngSubmit)="ngSubmit()">
       <ion-list lines="full" class="ion-no-margin">
         <ion-item>
-          <ion-label class="label">¿Toma algún medicamento? <span>*</span>:</ion-label>
+          <ion-label position="stacked" class="label">¿Toma algún medicamento? <span>*</span>:</ion-label>
           <ion-select formControlName="medicamento" (ionChange)="changeMedicamento($event)" >
             <ion-select-option value="si">Si</ion-select-option>
             <ion-select-option value="no">No</ion-select-option>
           </ion-select>
         </ion-item>
         <ion-item class="mt-2" *ngIf="isshowMedic">
-          <ion-label class="label">Dosis del medicamento:</ion-label>
+          <ion-label position="stacked" class="label">Dosis del medicamento:</ion-label>
           <ion-input formControlName="docis"></ion-input>
         </ion-item>
         <ion-item class="mt-2">
-          <ion-label class="label">¿Tiene lesiones? <span>*</span>:</ion-label>
+          <ion-label position="stacked" class="label">¿Tiene lesiones? <span>*</span>:</ion-label>
           <ion-select formControlName="lesion" (ionChange)="changeLes($event)" >
             <ion-select-option value="si">Si</ion-select-option>
             <ion-select-option value="no">No</ion-select-option>
           </ion-select>
         </ion-item>
         <ion-item class="mt-2" *ngIf="isshowLes">
-          <ion-label class="label">¿En qué parte del cuerpo presenta la lesión? <span>*</span>:</ion-label>
+          <ion-label position="stacked" class="label">¿En qué parte del cuerpo presenta la lesión? <span>*</span>:</ion-label>
           <ion-input  formControlName="deslesion"></ion-input>
         </ion-item>
         <ion-item class="mt-2">
-          <ion-label class="label">Indicar enfermedad crónica:</ion-label>
+          <ion-label position="stacked" class="label">Indicar enfermedad crónica:</ion-label>
           <ion-input formControlName="enfermendad"></ion-input>
         </ion-item>
       </ion-list>

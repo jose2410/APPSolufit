@@ -10,23 +10,23 @@
       <form [formGroup]="personalFrm" (ngSubmit)="ngSubmit()">
       <ion-list lines="full" class="ion-no-margin">
         <ion-item class="mt-2">
-          <ion-label>Sexo:</ion-label>
+          <ion-label position="stacked" >Sexo:</ion-label>
           <ion-input [disabled]="true" formControlName="genero"></ion-input>
         </ion-item>
         <ion-item>
-          <ion-label>Edad:</ion-label>
+          <ion-label position="stacked">Edad:</ion-label>
           <ion-input [disabled]="true" formControlName="edad"></ion-input>
         </ion-item>
         <ion-item class="mt-2">
-          <ion-label>Estatura (cm):</ion-label>
+          <ion-label position="stacked">Estatura (cm):</ion-label>
           <ion-input formControlName="estatura"></ion-input>
         </ion-item>
         <ion-item class="mt-2">
-          <ion-label>Peso (kg):</ion-label>
+          <ion-label position="stacked">Peso (kg):</ion-label>
           <ion-input formControlName="peso"></ion-input>
         </ion-item>
         <ion-item class="mt-2">
-          <ion-label>Perímetro abdominal (cm):</ion-label>
+          <ion-label position="stacked">Perímetro abdominal (cm):</ion-label>
           <ion-input formControlName="perimetro"></ion-input>
         </ion-item>
       </ion-list>

@@ -10,7 +10,7 @@
       <form [formGroup]="questFrm" (ngSubmit)="updateFicha()">
       <ion-list lines="full" class="ion-no-margin">
         <ion-item class="mt-2">
-          <ion-label>¿Cuentas con balanza en casa? <span>*</span></ion-label>
+          <ion-label  position="stacked">¿Cuentas con balanza en casa? <span>*</span></ion-label>
           <ion-select formControlName="balanzacasa">
             <ion-select-option value="si">Si</ion-select-option>
             <ion-select-option value="no">No</ion-select-option>
@@ -22,7 +22,7 @@
           <ion-textarea formControlName="balanzaalimento" placeholder="placeholder"></ion-textarea>
         </ion-item>
         <ion-item class="mt-2">
-          <ion-label>¿Cuentas con accesorios para entrenar en casa? <span>*</span></ion-label>
+          <ion-label  position="stacked">¿Cuentas con accesorios para entrenar en casa? <span>*</span></ion-label>
           <ion-select formControlName="accesorios">
             <ion-select-option value="si">Si</ion-select-option>
             <ion-select-option value="no">No</ion-select-option>

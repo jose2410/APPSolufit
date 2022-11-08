@@ -7,20 +7,21 @@
         </h3>
 
       </div>
+      <form [formGroup]="indicadorFrm" (ngSubmit)="updateFicha()">
       <ion-list lines="full" class="ion-no-margin">
 
         <ion-item class="mt-2">
           <ion-label class="label" position="stacked">¿Cuáles son las preparaciones de tu preferencia? (Ejem: cevivhe, arroz con pollo, etc.)  </ion-label>
-          <ion-textarea placeholder="placeholder"></ion-textarea>
+          <ion-textarea placeholder="placeholder" formControlName="preferencia"></ion-textarea>
         </ion-item>
         <ion-item class="mt-2">
           <ion-label class="label" position="stacked">¿Cuáles son los alimentos o preparaciones que te desagradan?   </ion-label>
-          <ion-textarea placeholder="placeholder"></ion-textarea>
+          <ion-textarea placeholder="placeholder" formControlName="desagradan"></ion-textarea>
         </ion-item>
       </ion-list>
-
+      </form>
       <div class="px-2 py-1 mt-5">
-        <a class="btn-next"  type="button" (click)="go()" expand="block">Siguiente
+        <a class="btn-next"  type="button" (click)="updateFicha()" expand="block">Siguiente
         </a>
       </div>
     </div>

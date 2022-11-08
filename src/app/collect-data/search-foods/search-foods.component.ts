@@ -482,7 +482,7 @@ export class SearchFoodsComponent implements OnInit {
 console.log(datas);
     this.indicadorService.actualizarIndicador(datas).subscribe((response: any)=>{
       // eslint-disable-next-line no-underscore-dangle
-      this.router.navigate(['collect/quest']);
+      this.router.navigate(['collect/ditary']);
     }, async (error) => {
       console.log(error);
       const er = error.error;
