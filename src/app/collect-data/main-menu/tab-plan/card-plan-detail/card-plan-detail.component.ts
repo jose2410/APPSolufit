@@ -49,6 +49,7 @@ this.router.navigate(['main/plan']);
       estado_comida: true,
       // eslint-disable-next-line @typescript-eslint/naming-convention
       lista_alimentos: this.comidas.lista_alimentos,
+      porcentaje:'33.33',
       horario: this.comidas.horario,
       // eslint-disable-next-line no-underscore-dangle
       _id:this.comidas._id
