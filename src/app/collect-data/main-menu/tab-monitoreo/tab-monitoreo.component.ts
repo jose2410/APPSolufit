@@ -5,6 +5,7 @@ import { IonInfiniteScroll, LoadingController, ToastController } from '@ionic/an
 
 import { Component, ViewChild, AfterViewInit, ElementRef } from '@angular/core';
 import Chart from 'chart.js/auto';
+import { Comida } from 'src/app/core/interfaces/comida';
 @Component({
   selector: 'app-tab-monitoreo',
   templateUrl: './tab-monitoreo.component.html',
@@ -24,6 +25,9 @@ export class TabMonitoreoComponent implements AfterViewInit  {
   mes: any[] = [];
   peso: any[] = [];
   abdomen: any[] = [];
+
+  datoPorcentaje: any;
+  dato: Comida[] = [];
 
   constructor(private apiServiceFicha: FichaNutricionalService, private apiService: AuthService,private loadingCtrl: LoadingController,
     private toastCtrl: ToastController,private datePipe: DatePipe) { }
@@ -60,6 +64,19 @@ export class TabMonitoreoComponent implements AfterViewInit  {
               await loading.dismiss();
             }, () => {
               loading.dismiss();
+            });
+
+            // eslint-disable-next-line no-underscore-dangle
+            this.apiServiceFicha.getHorarioFechaRegistroById(resp.plan._id,this.formatDate(new Date())).subscribe((rfech: any)=>{
+              // eslint-disable-next-line no-underscore-dangle
+              this.apiServiceFicha.getComidaByHorarioId(rfech.list._id).subscribe((com: any)=>{
+                this.dato = com.list;
+                this.dato.forEach(e => {
+                  if(e.estado_comida){
+                    this.datoPorcentaje =+ (Number(e.porcentaje)/100);
+                  }
+                });
+              });
             });
           }
         }, async (error) => {
@@ -158,4 +175,8 @@ export class TabMonitoreoComponent implements AfterViewInit  {
     });
 
   }
+
+  formatDate(fecha:any){
+  return  this.datePipe.transform(fecha, 'yyyy-MM-dd');
+ }
 }

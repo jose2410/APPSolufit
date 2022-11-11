@@ -71,6 +71,9 @@ export class FichaNutricionalService {
   getHorarioByPlanId(uid) {
     return this.http.get(environment.api_url + `horario/${uid}`);
   }
+  getHorarioFechaRegistroById(id: any, fecha: any){
+    return this.http.get(environment.api_url + `horario/hf/${id}/${fecha}`);
+  }
   getComidaByHorarioId(uid) {
     return this.http.get(environment.api_url + `comida/${uid}`);
   }
