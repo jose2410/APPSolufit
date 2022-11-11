@@ -26,7 +26,7 @@ export class TabMonitoreoComponent implements AfterViewInit  {
   peso: any[] = [];
   abdomen: any[] = [];
 
-  datoPorcentaje: any;
+  datoPorcentaje= 0;
   dato: Comida[] = [];
 
   constructor(private apiServiceFicha: FichaNutricionalService, private apiService: AuthService,private loadingCtrl: LoadingController,
@@ -73,9 +73,10 @@ export class TabMonitoreoComponent implements AfterViewInit  {
                 this.dato = com.list;
                 this.dato.forEach(e => {
                   if(e.estado_comida){
-                    this.datoPorcentaje =+ (Number(e.porcentaje)/100);
+                    this.datoPorcentaje =  ( this.datoPorcentaje + Number(e.porcentaje));
                   }
                 });
+                console.log(this.datoPorcentaje);
               });
             });
           }
