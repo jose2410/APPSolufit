@@ -23,8 +23,8 @@
           </ion-card>
           <ion-list >
             <ion-list-header>
-              <ion-label>29 - Jul <br> 66 kg</ion-label>
-              <ion-label class="forward" >Actual <br> 70 kg</ion-label>
+              <ion-label>{{formatDate(ficha.fecha_registro)}} <br> {{ficha.peso_inicial}} kg</ion-label>
+              <ion-label class="forward" >Actual <br> {{ficha.peso_actual}} kg</ion-label>
             </ion-list-header>
             <ion-progress-bar color="warning" class="justify-content-center align-items-center" value="1"></ion-progress-bar>
           </ion-list>
@@ -40,8 +40,8 @@
           </ion-card>
           <ion-list>
             <ion-list-header>
-              <ion-label>29 - Jul <br> 94 cm</ion-label>
-              <ion-label class="forward" >Actual <br> 89 cm</ion-label>
+              <ion-label>{{formatDate(ficha.fecha_registro)}} <br> {{ficha.perimetro_abdominal_inicial}} cm</ion-label>
+              <ion-label class="forward" >Actual <br> {{ficha.perimetro_abdominal_actual}} cm</ion-label>
             </ion-list-header>
             <ion-progress-bar color="warning" value="1"></ion-progress-bar>
           </ion-list>

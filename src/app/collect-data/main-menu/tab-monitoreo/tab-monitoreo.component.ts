@@ -25,7 +25,7 @@ export class TabMonitoreoComponent implements AfterViewInit  {
   mes: any[] = [];
   peso: any[] = [];
   abdomen: any[] = [];
-
+  ficha: any[] = [];
   datoPorcentaje= 0;
   dato: Comida[] = [];
 
@@ -88,6 +88,9 @@ export class TabMonitoreoComponent implements AfterViewInit  {
           await loading.dismiss();
         }, () => {
           loading.dismiss();
+        });
+        this.apiServiceFicha.getFichaByPacienteId(response.paciente._id).subscribe((resfi: any)=>{
+          this.ficha =resfi.ficha;
         });
       }
     }, async (error) => {
@@ -177,7 +180,7 @@ export class TabMonitoreoComponent implements AfterViewInit  {
 
   }
 
-  formatDate(fecha:any){
+  formatDate(fecha: any){
   return  this.datePipe.transform(fecha, 'yyyy-MM-dd');
  }
 }
