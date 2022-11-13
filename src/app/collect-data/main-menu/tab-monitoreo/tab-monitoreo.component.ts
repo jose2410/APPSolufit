@@ -133,7 +133,7 @@ export class TabMonitoreoComponent implements AfterViewInit  {
         labels: this.mes,
         datasets: [
           {
-            // label: 'Sell per week',
+           label: 'grafico',
           //  lineTension: 0.2,
             fill: false,
             backgroundColor: 'rgba(75,192,192,0.4)',
@@ -163,7 +163,7 @@ export class TabMonitoreoComponent implements AfterViewInit  {
         labels: this.mes,
         datasets: [
           {
-           // label: 'Sell per week',
+            label: 'grafico',
           //  lineTension: 0.2,
             fill: false,
             backgroundColor: 'rgba(75,192,192,0.4)',
