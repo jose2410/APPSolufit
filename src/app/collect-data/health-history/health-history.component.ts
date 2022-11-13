@@ -86,4 +86,8 @@ export class HealthHistoryComponent implements OnInit {
     });
   }
 
+  back(){
+    this.router.navigate(['collect/imc']);
+  }
+
 }

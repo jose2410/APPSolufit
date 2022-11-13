@@ -86,4 +86,8 @@ export class ImcComponent implements OnInit {
       loading.dismiss();
     });
   }
+
+  back(){
+    this.router.navigate(['collect/personalinfo']);
+  }
 }

@@ -48,4 +48,7 @@ export class ActivityComponent implements OnInit {
   localStorage.setItem('taza',dato.taza);
    this.router.navigate(['collect']);
   }
+  back(){
+    this.router.navigate(['home/sky']);
+  }
 }

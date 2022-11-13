@@ -71,5 +71,8 @@ console.log(datas);
   });
 }
 
+back(){
+  this.router.navigate(['collect/search']);
+}
 
 }

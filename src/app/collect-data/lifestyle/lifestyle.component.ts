@@ -128,4 +128,8 @@ export class LifestyleComponent implements OnInit {
     });
   }
 
+  back(){
+    this.router.navigate(['collect/health']);
+  }
+
 }

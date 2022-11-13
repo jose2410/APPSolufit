@@ -70,4 +70,8 @@ this.router.navigate(['main/plan']);
       loading.dismiss();
     });
   }
+
+  back(){
+    this.router.navigate(['main/plan']);
+  }
 }

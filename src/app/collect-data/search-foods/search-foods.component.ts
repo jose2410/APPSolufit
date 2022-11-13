@@ -493,4 +493,8 @@ console.log(datas);
       loading.dismiss();
     });
   }
+
+  back(){
+    this.router.navigate(['collect/indicator']);
+  }
 }

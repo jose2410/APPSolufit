@@ -92,4 +92,9 @@ registroEstado(){
     this.router.navigate(['main/plan']);
   });
 }
+
+back(){
+  this.router.navigate(['collect/ditary']);
+}
+
 }

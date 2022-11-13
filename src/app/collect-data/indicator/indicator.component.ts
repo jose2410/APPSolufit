@@ -68,4 +68,9 @@ export class IndicatorComponent implements OnInit {
    });
   //
  }
+
+ back(){
+  this.router.navigate(['collect/lifesty']);
+}
+
 }

@@ -29,11 +29,15 @@ export class TabMonitoreoComponent implements AfterViewInit  {
   datoPorcentaje= 0;
   dato: Comida[] = [];
 
+  idfechahorario: any;
+  horario: any;
+
   constructor(private apiServiceFicha: FichaNutricionalService, private apiService: AuthService,private loadingCtrl: LoadingController,
     private toastCtrl: ToastController,private datePipe: DatePipe) { }
 
   ngAfterViewInit(): void {
     this.getSeguimiento();
+    console.log(new Date());
   }
 
  async getSeguimiento(){
@@ -45,10 +49,14 @@ export class TabMonitoreoComponent implements AfterViewInit  {
         this.apiService.getPlan(response.paciente._id).subscribe( async (resp: any)=>{
           await loading.dismiss();
           if(resp.ok){
-            // eslint-disable-next-line no-underscore-dangle
-            this.apiService.getHorario(resp.plan._id).subscribe((resps: any)=>{
+             // eslint-disable-next-line no-underscore-dangle
+            this.idfechahorario = resp.plan._id;
+            this.apiService.getHorario(this.idfechahorario).subscribe((resps: any)=>{
+              console.log(resps);
+              this.horario = resps.horario.fecha_registro;
                 // eslint-disable-next-line no-underscore-dangle
                 this.apiServiceFicha.getSeguimientoByHorarioId(resps.horario._id).subscribe((sgresponse: any)=>{
+                  console.log(sgresponse);
                   sgresponse.list.forEach(e => {
                     this.mes.push(this.datePipe.transform(e.fecha_registro, 'MMM'));
                     this.peso.push(e.peso);
@@ -67,7 +75,8 @@ export class TabMonitoreoComponent implements AfterViewInit  {
             });
 
             // eslint-disable-next-line no-underscore-dangle
-            this.apiServiceFicha.getHorarioFechaRegistroById(resp.plan._id,this.formatDate(new Date())).subscribe((rfech: any)=>{
+            this.apiServiceFicha.getHorarioFechaRegistroById(this.idfechahorario,this.formatDate(new Date())).subscribe((rfech: any)=>{
+              console.log(rfech, 'demooo');
               // eslint-disable-next-line no-underscore-dangle
               this.apiServiceFicha.getComidaByHorarioId(rfech.list._id).subscribe((com: any)=>{
                 this.dato = com.list;
@@ -89,6 +98,7 @@ export class TabMonitoreoComponent implements AfterViewInit  {
         }, () => {
           loading.dismiss();
         });
+        // eslint-disable-next-line no-underscore-dangle
         this.apiServiceFicha.getFichaByPacienteId(response.paciente._id).subscribe((resfi: any)=>{
           this.ficha =resfi.ficha;
         });

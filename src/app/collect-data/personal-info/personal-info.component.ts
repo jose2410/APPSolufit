@@ -1,3 +1,4 @@
+import { DatePipe } from '@angular/common';
 import { ToastController, LoadingController, NavController } from '@ionic/angular';
 import { PacienteResponse } from './../../core/interfaces/pacienteResponse';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
@@ -11,6 +12,7 @@ import { FichaNutricionalService } from 'src/app/services/fucha-nutricional.serv
   selector: 'app-personal-info',
   templateUrl: './personal-info.component.html',
   styleUrls: ['./personal-info.component.scss'],
+  providers: [DatePipe]
 })
 export class PersonalInfoComponent implements OnInit {
   personalFrm: FormGroup;
@@ -21,7 +23,8 @@ export class PersonalInfoComponent implements OnInit {
     private pacienteService: PacienteService,
     private loadingCtrl: LoadingController,
     private toastCtrl: ToastController,
-    private fichaService: FichaNutricionalService) {
+    private fichaService: FichaNutricionalService,
+    private datePipe: DatePipe) {
     this.personalFrm = new FormGroup({
       genero: new FormControl(''),
       edad: new FormControl(''),
@@ -69,6 +72,7 @@ export class PersonalInfoComponent implements OnInit {
     await loading.present();
     const valueForm = this.personalFrm.value;
     const data ={
+      fecha_registro:this.formatDate(new Date()),
       objetivo:localStorage.getItem('nameobjetico'),
       nivel_actividad:localStorage.getItem('nameactiviy'),
       taza_actividad:localStorage.getItem('taza'),
@@ -100,5 +104,13 @@ export class PersonalInfoComponent implements OnInit {
       loading.dismiss();
     });
    //
+  }
+
+  formatDate(fecha: any){
+    return  this.datePipe.transform(fecha, 'yyyy-MM-dd');
+   }
+
+  back(){
+    this.router.navigate(['home/activity']);
   }
 }
